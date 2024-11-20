@@ -8,65 +8,74 @@ public class ConnetBD {
     private final String URLU = "jdbc:mysql://localhost:3306/usuarios?";
     private final String USER = "root";
     private final String PASSWORD = "root";
-    private ArrayList<Agentes> agentes = new ArrayList();
-    private ArrayList<Habilidad> hab = new ArrayList();
-    private ArrayList<Rol> rol = new ArrayList();
     private ArrayList<User> usuarios = new ArrayList();
 
-    public void ConnetValorant() {
+    public Agentes ConnetValorant_Agente(String nombre) {
         try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
              Statement stmt = con.createStatement()) {
+            // Consulta para seleccionar todas las filas de la tabla 'agentes'
+            String query = String.format("SELECT * FROM agentes WHERE nombre = '%s'", nombre);
+            ResultSet resultSet = stmt.executeQuery(query);
 
-            System.out.println("Conexión exitosa en la base de datos!");
-
-            // Consulta para seleccionar todas las filas de la tabla 'paises'
-            String queryAgentes = "SELECT * FROM agentes";
-            String queryHabilidades_agentes = "SELECT * FROM Habilidades_agentes";
-            String queryRoles = "SELECT * FROM agentes";
-            ResultSet resultSetAgentes = stmt.executeQuery(queryRoles);
-            ResultSet resultSetHabilidades = stmt.executeQuery(queryHabilidades_agentes);
-            ResultSet resultSetRoles = stmt.executeQuery(queryRoles);
-
-            // Procesar resultados
-            procesarAgentes(resultSetAgentes);
-            procesarHabilidades(resultSetHabilidades);
-            procesarRoles(resultSetRoles);
-
-
+        return procesarAgentes(resultSet);
         } catch (SQLException e) {
             System.err.println("Error de establecimiento de conexión: " + e.getMessage());
         }
+        return null;
     }
 
-    private ArrayList<Agentes> procesarAgentes(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
-            int id_ag = resultSet.getInt("id_ag");
-            String nombre_ag = resultSet.getString("nombre_ag");
-            String descrip_ag = resultSet.getString("descrip_ag");
-            int id_rol_ag = resultSet.getInt("id_rol_ag");
 
-            // Crear un objeto Agente y agregarlo a la lista
-            Agentes agente = new Agentes(id_ag, nombre_ag, descrip_ag, id_rol_ag);
-            agentes.add(agente);
+    private Agentes procesarAgentes(ResultSet resultSet) throws SQLException {
+        int id_ag = resultSet.getInt("id_ag");
+        String nombre_ag = resultSet.getString("nombre_ag");
+        String descrip_ag = resultSet.getString("descrip_ag");
+        int id_rol_ag = resultSet.getInt("id_rol_ag");
+
+        // Crear un objeto Agente y agregarlo a la lista
+        Agentes agente = new Agentes(id_ag, nombre_ag, descrip_ag, id_rol_ag);
+        return agente;
+    }
+
+    public Habilidad ConnetValorant_Habilidades(String nombre_habilidade) {
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement()) {
+            // Consulta para seleccionar todas las filas de la tabla 'HABILIDADES_AGENTES'
+            String query = String.format("SELECT * FROM HABILIDADES_AGENTES WHERE NOMBRE_HAB = '%s'", nombre_habilidade);
+            ResultSet resultSet = stmt.executeQuery(query);
+
+            return procesarHabilidades(resultSet);
+        } catch (SQLException e) {
+            System.err.println("Error de establecimiento de conexión: " + e.getMessage());
         }
-        return agentes;
+        return null;
     }
 
-    private ArrayList<Habilidad> procesarHabilidades(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
+    private Habilidad procesarHabilidades(ResultSet resultSet) throws SQLException {
             int id_ag_per = resultSet.getInt("id_ag_per");
             String nombre_hab = resultSet.getString("nombre_hab");
             String descrip_hab = resultSet.getString("descrip_hab");
 
             // Crear un objeto Habilidad y agregarlo a la lista
             Habilidad habilidad = new Habilidad(id_ag_per, nombre_hab, descrip_hab);
-            hab.add(habilidad);
-        }
-        return hab;
+
+        return habilidad;
     }
 
-    private ArrayList<Rol> procesarRoles(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
+
+    public Rol ConnetValorant_Roles(int id_rol) {
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement()) {
+            // Consulta para seleccionar todas las filas de la tabla 'ROLES'
+            String query = String.format("SELECT * FROM ROLES WHERE ID_ROL = '%s'", id_rol);
+            ResultSet resultSet = stmt.executeQuery(query);
+
+            return procesarRoles(resultSet);
+        } catch (SQLException e) {
+            System.err.println("Error de establecimiento de conexión: " + e.getMessage());
+        }
+        return null;
+    }
+    private Rol procesarRoles(ResultSet resultSet) throws SQLException {
             int id_rol = resultSet.getInt("id_rol");
             String nombreRolString = resultSet.getString("nombre_rol");
             Roles nombreRol = Roles.getRol(nombreRolString.toUpperCase());
@@ -74,11 +83,11 @@ public class ConnetBD {
 
             // Crear un objeto Rol y agregarlo a la lista
             Rol rol1 = new Rol(id_rol, nombreRol,  descrip_rol);
-            rol.add(rol1);
-        }
-        return rol;
+
+        return rol1;
     }
 
+    //Conecxión a la BD de Usuarios
     public void ConnetUsuario() {
         try (Connection con = DriverManager.getConnection(URLU, USER, PASSWORD);
              Statement stmt = con.createStatement()) {
@@ -97,6 +106,7 @@ public class ConnetBD {
         };
     }
 
+    //Procesar datos de usuarios
     private ArrayList<User> procesarUsuarios(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             String nombre_usuario = resultSet.getString("nombre");
@@ -109,20 +119,7 @@ public class ConnetBD {
         }
         return usuarios;
     }
-
-    public ArrayList<Agentes> getAgentes() {
-        return new ArrayList<>(agentes);
-    }
-
-    public ArrayList<Habilidad> getHab() {
-        return new ArrayList<>(hab);
-    }
-
-    public ArrayList<Rol> getRol() {
-        return new ArrayList<>(rol);
-    }
-
-    public ArrayList<User> getUser() {
-        return new ArrayList<>(usuarios);
+    public ArrayList<User> getUsuarios() {
+        return usuarios;
     }
 }
