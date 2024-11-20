@@ -1,5 +1,7 @@
 package edu.badpals.proyectoad_bd.Controller;
 
+import edu.badpals.proyectoad_bd.Model.ConnetBD;
+import edu.badpals.proyectoad_bd.Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,8 @@ import java.util.HashMap;
 
 public class LoginController {
     String archivo = "src/main/resources/BD/users.txt";
+    ConnetBD con = new ConnetBD();
+
     @FXML
     public TextField txtLogin;
 
@@ -36,24 +40,10 @@ public class LoginController {
     private HashMap<String, String> userCredentials = new HashMap<>();
 
     @FXML
-    public void initialize() {
-        leer();
-    }
-
     private void leer(){
-
-        try(BufferedReader br = new BufferedReader(new FileReader(archivo))){
-            String linea;
-            while ((linea = br.readLine())!= null){
-                String[] partes = linea.split("=", 2);
-                if (partes.length == 2) {
-                    String usuario = partes[0].trim();
-                    String contrasenia = partes[1].trim();
-                    userCredentials.put(usuario, contrasenia);
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        con.ConnetUsuario();
+        for (User user : con.getUsuarios()) {
+            userCredentials.put(user.getNombreUsuario(), user.getContraseña());
         }
     }
 
@@ -63,7 +53,9 @@ public class LoginController {
 
         if (autentificacionUser(user,password)) {
             try {
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
+              
                 Parent root = loader.load();
                 Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -79,6 +71,7 @@ public class LoginController {
     }
 
     private boolean autentificacionUser(String user, String password){
+
         if (userCredentials.containsKey(user)) {
             return userCredentials.get(user).equals(password);
         }
