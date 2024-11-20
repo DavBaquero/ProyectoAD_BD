@@ -63,7 +63,7 @@ public class LoginController {
 
         if (autentificacionUser(user,password)) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/valorantapi/viewBD.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
                 Parent root = loader.load();
                 Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
