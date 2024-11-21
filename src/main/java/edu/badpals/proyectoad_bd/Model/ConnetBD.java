@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class ConnetBD {
-    private final String URLV = "jdbc:mysql://localhost:3306/valorant?";
+    private static final String URLV = "jdbc:mysql://localhost:3306/valorant?";
     private final String URLU = "jdbc:mysql://localhost:3306/usuarios?";
-    private final String USER = "root";
-    private final String PASSWORD = "root";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
     private ArrayList<User> usuarios = new ArrayList();
 
     public Agentes ConnetValorant_Agente(String nombre) {
@@ -122,4 +122,73 @@ public class ConnetBD {
     public ArrayList<User> getUsuarios() {
         return usuarios;
     }
+
+    public static void connect(){
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement()) {
+            System.out.println("Conexión exitosa en la base de datos!");
+        } catch (SQLException e) {
+            System.err.println("Error de establecimiento de conexión: " + e.getMessage());
+        }
+    }
+
+    public static void paraAgentes(){
+        connect();
+        if (procedimientoExiste("PARAAGENTES")) {
+            System.out.println("El procedimiento almacenado ya existe.");
+        } else {
+            crearProcedimientoParaAgentes();
+        }
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             CallableStatement callableStatement = con.prepareCall("{CALL PARAAGENTES(?)}")) {
+            callableStatement.setString(1, "Jett");
+            boolean hasResults = callableStatement.execute();
+            while (hasResults) {
+                try (ResultSet rs = callableStatement.getResultSet()) {
+                    while (rs.next()) {
+                        System.out.println("Nombre: " + rs.getString("NOMBRE_AG"));
+                        System.out.println("Descripción: " + rs.getString("DESCRIP_AG"));
+                        System.out.println("Rol: " + rs.getString("NOMBRE_ROL"));
+                        System.out.println("Habilidades: " + rs.getString("NOMBRE_HAB"));
+                    }
+                    hasResults = callableStatement.getMoreResults();
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al llamar al procedimiento almacenado: " + e.getMessage());
+        }
+    }
+    private static boolean procedimientoExiste(String nombreProcedimiento) {
+        String query = "SHOW PROCEDURE STATUS WHERE Name = '" + nombreProcedimiento + "'";
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            return rs.next();
+        } catch (SQLException e) {
+            System.err.println("Error al verificar el procedimiento: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public static void crearProcedimientoParaAgentes() {
+        String createProcedureSQL = "CREATE PROCEDURE PARAAGENTES(IN NOMBRE_AGE VARCHAR(15)) " +
+                "BEGIN " +
+                "SELECT a.NOMBRE_AG, a.DESCRIP_AG, r.NOMBRE_ROL " +
+                "FROM agentes AS a " +
+                "INNER JOIN roles AS r ON a.ID_ROL_AG = r.ID_ROL " +
+                "WHERE a.NOMBRE_AG = NOMBRE_AGE; " +
+                "SELECT h.NOMBRE_HAB " +
+                "FROM habilidades_agentes AS h " +
+                "INNER JOIN agentes AS a ON h.ID_AG_PER = a.ID_AG " +
+                "WHERE a.NOMBRE_AG = NOMBRE_AGE; " +
+                "END;";
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement()) {
+            stmt.execute(createProcedureSQL);
+            System.out.println("Procedimiento almacenado creado exitosamente.");
+        } catch (SQLException e) {
+            System.err.println("Error al crear el procedimiento almacenado: " + e.getMessage());
+        }
+    }
+
 }
