@@ -54,9 +54,10 @@ public class ConnetBD {
             int id_ag_per = resultSet.getInt("id_ag_per");
             String nombre_hab = resultSet.getString("nombre_hab");
             String descrip_hab = resultSet.getString("descrip_hab");
+            Enum<Habilidades> tipo_hab = Habilidades.getHabilidad(nombre_hab);
 
             // Crear un objeto Habilidad y agregarlo a la lista
-            Habilidad habilidad = new Habilidad(id_ag_per, nombre_hab, descrip_hab);
+            Habilidad habilidad = new Habilidad(id_ag_per, nombre_hab, descrip_hab, tipo_hab);
 
         return habilidad;
     }
