@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
             primaryStage.setTitle("Login ValorantAPI");
             primaryStage.setScene(new Scene(root));
             primaryStage.setMinWidth(400);

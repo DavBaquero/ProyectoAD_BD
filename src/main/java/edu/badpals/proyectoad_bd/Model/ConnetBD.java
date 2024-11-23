@@ -263,4 +263,29 @@ public class ConnetBD {
         }
         return habilidadesList;
     }
+
+
+    public static ObservableList<RolDTO> getRolTab(){
+        ObservableList<RolDTO> rolesList = FXCollections.observableArrayList();
+        String query = "SELECT r.ID_ROL, r.NOMBRE_ROL, r.DESCRIP_ROL, a.NOMBRE_AG " +
+                "from roles as r inner join agentes as a on r.ID_ROL = a.id_rol_ag;\n";
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement();
+             ResultSet resultSet = stmt.executeQuery(query)) {
+                while (resultSet.next()) {
+                    int idRol = resultSet.getInt("ID_ROL");
+                    String nombreRol = resultSet.getString("NOMBRE_ROL");
+                    String descripRol = resultSet.getString("DESCRIP_ROL");
+                    String nomAgente = resultSet.getString("NOMBRE_AG");
+
+                    // Crear un objeto RolDTO
+                    RolDTO rolDTO = new RolDTO(idRol, nombreRol, descripRol, nomAgente);
+
+                    rolesList.add(rolDTO);
+                }
+        } catch (SQLException e) {
+                System.err.println("Error de establecimiento de conexión: " + e.getMessage());
+        }
+        return rolesList;
+    }
 }

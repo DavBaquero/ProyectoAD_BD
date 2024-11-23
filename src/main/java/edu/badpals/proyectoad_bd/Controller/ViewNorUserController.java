@@ -1,6 +1,7 @@
 package edu.badpals.proyectoad_bd.Controller;
 
 import edu.badpals.proyectoad_bd.Model.AgenteDTO;
+import edu.badpals.proyectoad_bd.Model.RolDTO;
 import edu.badpals.proyectoad_bd.Model.ConnetBD;
 import edu.badpals.proyectoad_bd.Model.HabilidadDTO;
 import javafx.collections.ObservableList;
@@ -72,12 +73,18 @@ public class ViewNorUserController {
         Col_Nom_HAG.setCellValueFactory(new PropertyValueFactory<>("nombreag"));
         Col_Hab_AG.setCellValueFactory(new PropertyValueFactory<>("nombreHab"));
 
+        Col_Id_Rol.setCellValueFactory(new PropertyValueFactory<>("idRol"));
+        Col_Nom_Rol.setCellValueFactory(new PropertyValueFactory<>("nombreRol"));
+        Col_Nom_Agente.setCellValueFactory(new PropertyValueFactory<>("nom_agente"));
+
         // Cargar datos en el TableView
         TableAg.setItems(getAgentesData());
         TableHab.setItems(getHabData());
+        TableRol.setItems(getRolData());
 
         TableAg.setOnMouseClicked(event -> handleRowClickAg(event));
         TableHab.setOnMouseClicked(event -> handleRowClickHab(event));
+        TableRol.setOnMouseClicked(event -> handleRowClickRol(event));
     }
 
     private ObservableList<AgenteDTO> getAgentesData() {
@@ -140,5 +147,46 @@ public class ViewNorUserController {
             lblDescripHab.setText(selectedHab.getDescripcion());
         }
     }
+
+    @FXML
+    Label lblModRol;
+
+    @FXML
+    Label lblDescripRol;
+
+    @FXML
+    Label lblModNomRAg;
+
+    @FXML
+    TableView<RolDTO> TableRol;
+
+    @FXML
+    TableColumn<RolDTO, Integer> Col_Id_Rol;
+
+    @FXML
+    TableColumn<RolDTO, String> Col_Nom_Rol;
+
+    @FXML
+    TableColumn<RolDTO, String> Col_Nom_Agente;
+
+    private ObservableList<RolDTO> getRolData() {
+        ConnetBD.connect();
+        return ConnetBD.getRolTab();
+    }
+
+    private void handleRowClickRol(MouseEvent event) {
+        RolDTO selectedRol = TableRol.getSelectionModel().getSelectedItem();
+        if (selectedRol != null) {
+            // Imprimir en consola para depuración
+            System.out.println("Rol seleccionado: " + selectedRol.getNombreRol());
+
+            // Actualizar las etiquetas con la información del rol
+            lblModRol.setText(selectedRol.getNombreRol());
+            lblDescripRol.setText(selectedRol.getDescripcion());
+            lblModNomRAg.setText(selectedRol.getNom_agente());
+        }
+    }
+
+
 }
 

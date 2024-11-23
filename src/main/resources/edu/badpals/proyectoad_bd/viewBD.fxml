@@ -87,11 +87,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
+                        <TableView fx:id="TableRol" layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
                           <columns>
-                            <TableColumn prefWidth="130.0" text="ID_ROL" />
-                            <TableColumn prefWidth="350.0" text="NOMBRE_ROL" />
-                              <TableColumn prefWidth="350.0" text="PERSONAJES" />
+                            <TableColumn fx:id="Col_Id_Rol" prefWidth="130.0" text="ID_ROL" />
+                            <TableColumn fx:id="Col_Nom_Rol" prefWidth="350.0" text="NOMBRE_ROL" />
+                              <TableColumn fx:id="Col_Nom_Agente" prefWidth="350.0" text="PERSONAJES" />
                           </columns>
                         </TableView>
                         <Label layoutX="40.0" layoutY="39.0" prefHeight="20.0" prefWidth="220.0" text="Nombre de rol: " />
