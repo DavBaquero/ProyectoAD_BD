@@ -1,5 +1,8 @@
 package edu.badpals.proyectoad_bd.Model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -199,5 +202,41 @@ public class ConnetBD {
             System.err.println("Error al crear el procedimiento almacenado: " + e.getMessage());
         }
     }
+
+
+    public static ObservableList<AgenteDTO> getAgentesTab() {
+        ObservableList<AgenteDTO> agentesList = FXCollections.observableArrayList();
+        String query = "SELECT a.ID_AG, a.NOMBRE_AG, r.NOMBRE_ROL, " +
+                "MAX(CASE WHEN h.TIPO_HAB = 'C' THEN h.NOMBRE_HAB END) AS Habilidad_C, " +
+                "MAX(CASE WHEN h.TIPO_HAB = 'Q' THEN h.NOMBRE_HAB END) AS Habilidad_Q, " +
+                "MAX(CASE WHEN h.TIPO_HAB = 'E' THEN h.NOMBRE_HAB END) AS Habilidad_E, " +
+                "MAX(CASE WHEN h.TIPO_HAB = 'X' THEN h.NOMBRE_HAB END) AS Habilidad_X " +
+                "FROM agentes a " +
+                "JOIN roles r ON a.ID_ROL_AG = r.ID_ROL " +
+                "LEFT JOIN habilidades_agentes h ON a.ID_AG = h.ID_AG_PER " +
+                "GROUP BY a.ID_AG, a.NOMBRE_AG, r.NOMBRE_ROL";
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement();
+             ResultSet resultSet = stmt.executeQuery(query)) {
+            while (resultSet.next()) {
+                int idAg = resultSet.getInt("ID_AG");
+                String nombreAg = resultSet.getString("NOMBRE_AG");
+                String nombreRol = resultSet.getString("NOMBRE_ROL");
+                String habC = resultSet.getString("Habilidad_C");
+                String habQ = resultSet.getString("Habilidad_Q");
+                String habE = resultSet.getString("Habilidad_E");
+                String habX = resultSet.getString("Habilidad_X");
+
+                // Crear un objeto AgenteDTO
+                AgenteDTO agenteDTO = new AgenteDTO(idAg, nombreAg, nombreRol, habC, habQ, habE, habX);
+
+                agentesList.add(agenteDTO);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error de establecimiento de conexión: " + e.getMessage());
+        }
+        return agentesList;
+    }
+
 
 }
