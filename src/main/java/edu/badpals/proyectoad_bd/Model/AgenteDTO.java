@@ -8,8 +8,10 @@ public class AgenteDTO {
     private String habilidadQ;
     private String habilidadE;
     private String habilidadX;
+    private String descripcion;  // Nueva propiedad
 
-    public AgenteDTO(int idAg, String nombreAg, String nombreRol, String habilidadC, String habilidadQ, String habilidadE, String habilidadX) {
+    // Constructor modificado para incluir 'descripcion'
+    public AgenteDTO(int idAg, String nombreAg, String nombreRol, String habilidadC, String habilidadQ, String habilidadE, String habilidadX, String descripcion) {
         this.idAg = idAg;
         this.nombreAg = nombreAg;
         this.nombreRol = nombreRol;
@@ -17,6 +19,7 @@ public class AgenteDTO {
         this.habilidadQ = habilidadQ;
         this.habilidadE = habilidadE;
         this.habilidadX = habilidadX;
+        this.descripcion = descripcion;  // Asignar el valor de descripcion
     }
 
     // Getters
@@ -46,5 +49,9 @@ public class AgenteDTO {
 
     public String getHabilidadX() {
         return habilidadX;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 }
