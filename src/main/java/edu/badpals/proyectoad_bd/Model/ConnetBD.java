@@ -206,7 +206,7 @@ public class ConnetBD {
 
     public static ObservableList<AgenteDTO> getAgentesTab() {
         ObservableList<AgenteDTO> agentesList = FXCollections.observableArrayList();
-        String query = "SELECT a.ID_AG, a.NOMBRE_AG, r.NOMBRE_ROL, " +
+        String query = "SELECT a.ID_AG, a.NOMBRE_AG, r.NOMBRE_ROL, a.DESCRIP_AG, " +
                 "MAX(CASE WHEN h.TIPO_HAB = 'C' THEN h.NOMBRE_HAB END) AS Habilidad_C, " +
                 "MAX(CASE WHEN h.TIPO_HAB = 'Q' THEN h.NOMBRE_HAB END) AS Habilidad_Q, " +
                 "MAX(CASE WHEN h.TIPO_HAB = 'E' THEN h.NOMBRE_HAB END) AS Habilidad_E, " +
@@ -222,13 +222,14 @@ public class ConnetBD {
                 int idAg = resultSet.getInt("ID_AG");
                 String nombreAg = resultSet.getString("NOMBRE_AG");
                 String nombreRol = resultSet.getString("NOMBRE_ROL");
+                String DescripAg = resultSet.getString("DESCRIP_AG");
                 String habC = resultSet.getString("Habilidad_C");
                 String habQ = resultSet.getString("Habilidad_Q");
                 String habE = resultSet.getString("Habilidad_E");
                 String habX = resultSet.getString("Habilidad_X");
 
                 // Crear un objeto AgenteDTO
-                AgenteDTO agenteDTO = new AgenteDTO(idAg, nombreAg, nombreRol, habC, habQ, habE, habX);
+                AgenteDTO agenteDTO = new AgenteDTO(idAg, nombreAg, nombreRol, habC, habQ, habE, habX, DescripAg);
 
                 agentesList.add(agenteDTO);
             }
@@ -237,6 +238,4 @@ public class ConnetBD {
         }
         return agentesList;
     }
-
-
 }
