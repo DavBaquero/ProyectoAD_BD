@@ -18,14 +18,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));            primaryStage.setTitle("Login ValorantAPI");
+            Parent root = FXMLLoader.load(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
+            primaryStage.setTitle("Login ValorantAPI");
             primaryStage.setScene(new Scene(root));
             primaryStage.setMinWidth(400);
             primaryStage.setMinHeight(300);
             primaryStage.show();
         } catch (IOException e) {
             System.err.println("Error loading the FXML file: " + e.getMessage());
-            // Puedes agregar un diálogo de error aquí
         }
     }
 }

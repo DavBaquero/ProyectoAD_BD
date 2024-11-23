@@ -87,38 +87,49 @@ public class ConnetBD {
         return rol1;
     }
 
-    //Conecxión a la BD de Usuarios
-    public void ConnetUsuario() {
-        try (Connection con = DriverManager.getConnection(URLU, USER, PASSWORD);
-             Statement stmt = con.createStatement()) {
+    // Método para conectar a la base de datos
+    public Connection connetUsuario() {
+        try {
+            Connection connection = DriverManager.getConnection(URLU, USER, PASSWORD);
+            System.out.println("Conexión exitosa en la base de datos Usuarios!");
+            return connection;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al conectar a la base de datos: " + e.getMessage());
+        }
+    }
 
-            System.out.println("Conexión exitosa en la base de datos!");
+    // Método para seleccionar usuarios
+    public ArrayList<User> selectUsuario() {
+        ArrayList<User> usuarios = new ArrayList<>();
+        String query = "SELECT * FROM usuario";
 
-            // Consulta para seleccionar todas las filas de la tabla 'paises'
-            String query = "SELECT * FROM ususario";
-            ResultSet resultSet = stmt.executeQuery(query);
+        try (Connection connection = connetUsuario();
+             Statement stmt = connection.createStatement();
+             ResultSet resultSet = stmt.executeQuery(query)) {
 
-            // Procesar resultados
-            procesarUsuarios(resultSet);
+            System.out.println("Consulta realizada");
+            usuarios = procesarUsuarios(resultSet);
+            System.out.println("Resultados Procesados");
 
         } catch (SQLException e) {
             System.err.println("Error de establecimiento de conexión: " + e.getMessage());
-        };
+        }
+
+        return usuarios;
     }
 
-    //Procesar datos de usuarios
+    // Procesar datos de usuarios
     private ArrayList<User> procesarUsuarios(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             String nombre_usuario = resultSet.getString("nombre");
             String contraseña = resultSet.getString("contraseña");
-            Boolean administrador = resultSet.getBoolean("Administrador");
-
-            // Crear un objeto Usuario y agregarlo a la lista
+            boolean administrador = resultSet.getBoolean("administrador");
             User usuario = new User(nombre_usuario, contraseña, administrador);
             usuarios.add(usuario);
         }
         return usuarios;
     }
+
     public ArrayList<User> getUsuarios() {
         return usuarios;
     }
