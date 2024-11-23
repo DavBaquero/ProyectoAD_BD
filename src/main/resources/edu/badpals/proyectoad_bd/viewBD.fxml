@@ -63,15 +63,15 @@
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab text="Habilidades">
+            <Tab fx:id="TabHab" text="Habilidades">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #c0353b;">
                      <children>
-                        <TableView layoutX="-1.0" layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
+                        <TableView fx:id="TableHab" layoutX="-1.0" layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
                           <columns>
-                            <TableColumn prefWidth="130.0" text="ID_AG_PER" />
-                            <TableColumn prefWidth="350.0" text="NOMBRE_AG" />
-                              <TableColumn prefWidth="350.0" text="NOMBRE_HAB" />
+                            <TableColumn fx:id="Col_Id_Ag_Per" prefWidth="130.0" text="ID_AG_PER" />
+                            <TableColumn fx:id="Col_Nom_HAG" prefWidth="350.0" text="NOMBRE_AG" />
+                              <TableColumn fx:id="Col_Hab_AG" prefWidth="350.0" text="NOMBRE_HAB" />
                           </columns>
                         </TableView>
                         <Label layoutX="46.0" layoutY="25.0" prefHeight="20.0" prefWidth="220.0" text="Nombre del Agente: " />
@@ -87,11 +87,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
+                        <TableView fx:id="TableRol" layoutY="185.0" prefHeight="297.0" prefWidth="830.0">
                           <columns>
-                            <TableColumn prefWidth="130.0" text="ID_ROL" />
-                            <TableColumn prefWidth="350.0" text="NOMBRE_ROL" />
-                              <TableColumn prefWidth="350.0" text="PERSONAJES" />
+                            <TableColumn fx:id="Col_Id_Rol" prefWidth="130.0" text="ID_ROL" />
+                            <TableColumn fx:id="Col_Nom_Rol" prefWidth="350.0" text="NOMBRE_ROL" />
+                              <TableColumn fx:id="Col_Nom_Agente" prefWidth="350.0" text="PERSONAJES" />
                           </columns>
                         </TableView>
                         <Label layoutX="40.0" layoutY="39.0" prefHeight="20.0" prefWidth="220.0" text="Nombre de rol: " />
