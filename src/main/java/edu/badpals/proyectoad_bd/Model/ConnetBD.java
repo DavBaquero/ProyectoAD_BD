@@ -238,4 +238,29 @@ public class ConnetBD {
         }
         return agentesList;
     }
+
+    public static ObservableList<HabilidadDTO> getHabTab(){
+        ObservableList<HabilidadDTO> habilidadesList = FXCollections.observableArrayList();
+        String query = "SELECT a.ID_AG, a.NOMBRE_AG, h.NOMBRE_HAB, h.DESCRIP_HAB from habilidades_agentes as h inner join\n" +
+                "    agentes as a on h.id_ag_per =\n" +
+                "                    a.id_ag";
+        try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
+             Statement stmt = con.createStatement();
+             ResultSet resultSet = stmt.executeQuery(query)) {
+            while (resultSet.next()) {
+                int idAg = resultSet.getInt("ID_AG");
+                String nombreAg = resultSet.getString("NOMBRE_AG");
+                String nombreHab = resultSet.getString("NOMBRE_HAB");
+                String descripHab = resultSet.getString("DESCRIP_HAB");
+
+                // Crear un objeto HabilidadDTO
+                HabilidadDTO habilidadDTO = new HabilidadDTO(idAg, nombreAg, nombreHab, descripHab);
+
+                habilidadesList.add(habilidadDTO);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error de establecimiento de conexión: " + e.getMessage());
+        }
+        return habilidadesList;
+    }
 }
