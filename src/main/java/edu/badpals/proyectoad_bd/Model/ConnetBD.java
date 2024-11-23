@@ -133,7 +133,7 @@ public class ConnetBD {
         }
     }
 
-    public static void paraAgentes(){
+    public static void paraAgentes() {
         connect();
         if (procedimientoExiste("PARAAGENTES")) {
             System.out.println("El procedimiento almacenado ya existe.");
@@ -150,15 +150,23 @@ public class ConnetBD {
                         System.out.println("Nombre: " + rs.getString("NOMBRE_AG"));
                         System.out.println("Descripción: " + rs.getString("DESCRIP_AG"));
                         System.out.println("Rol: " + rs.getString("NOMBRE_ROL"));
-                        System.out.println("Habilidades: " + rs.getString("NOMBRE_HAB"));
                     }
-                    hasResults = callableStatement.getMoreResults();
                 }
+                hasResults = callableStatement.getMoreResults();
+                if (hasResults) {
+                    try (ResultSet rs = callableStatement.getResultSet()) {
+                        while (rs.next()) {
+                            System.out.println("Habilidades: " + rs.getString("NOMBRE_HAB"));
+                        }
+                    }
+                }
+                hasResults = callableStatement.getMoreResults();
             }
         } catch (SQLException e) {
             System.err.println("Error al llamar al procedimiento almacenado: " + e.getMessage());
         }
     }
+
     private static boolean procedimientoExiste(String nombreProcedimiento) {
         String query = "SHOW PROCEDURE STATUS WHERE Name = '" + nombreProcedimiento + "'";
         try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);
