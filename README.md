@@ -1,6 +1,6 @@
 # AUTORES: *David Baquero y Samuel*
 
-## Repositorio github: https://github.com/Samuyo/ProyectJSON_AD/
+## Repositorio github: https://github.com/Samuyo/ProyectJSON_AD/](https://github.com/DavBaquero/ProyectoAD_BD.git
 ***
 
 # Índice
