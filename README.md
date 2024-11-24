@@ -91,6 +91,32 @@ Si pulsas en roles:<br/>
 Cuando pulses un rol, te saldrá algo como esto:
 ![Imagen_AppR_Click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Rol_click.png)
 
+***
+
+#### Administrador
+
+La vista inicial si es administrador:<br/>
+![Admin_view](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ViewAdmin.png)
+
+Si se pulsa el botón del administrar, podremos seleccionar el usuario a administrar:<br/>
+![Selec_view](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/VerUsuarios.png)
+
+Si se selecciona quedaría así:<br/>
+![Selecci_view](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/Seleccion.png)
+
+Si se pulsa borrar con alguin seleccionado:<br/>
+![Borrar](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/userBorrado.png)
+
+Si se edita:<br/>
+![Editar](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ActualizarUser.png)
+
+Al recargar la página:<br/>
+![Actu](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/resultadoactua.png)
+
+Si se asigna como administrador: <br/>
+
+![NuevoAdmin](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/Asignarnuevoadmin.png)
+
 ## MANUAL TÉCNICO
 En la paquete de Controller, están ubicados los controladores de las ventas y sus funciones *tratado en el 3.2*
 En el paquete Modelo, están ubicados las clases y los métodos de funcionamiento de la aplicación *tratado en el 3.3*.
