@@ -28,7 +28,6 @@ public class Main extends Application {
             primaryStage.show();
         } catch (IOException e) {
             System.err.println("Error loading the FXML file: " + e.getMessage());
-            // Puedes agregar un diálogo de error aquí
         }
     }
 }

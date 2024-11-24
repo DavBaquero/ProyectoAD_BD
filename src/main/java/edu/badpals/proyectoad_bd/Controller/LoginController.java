@@ -13,13 +13,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginController {
-    String archivo = "src/main/resources/BD/users.txt";
     ConnetBD con = new ConnetBD();
 
     @FXML
@@ -38,10 +39,11 @@ public class LoginController {
     public Button btnEnviar;
 
     private HashMap<String, String> userCredentials = new HashMap<>();
+    private ArrayList<User> administradores = new ArrayList<>();
 
     @FXML
     private void leer(){
-        con.ConnetUsuario();
+        con.selectUsuario();
         for (User user : con.getUsuarios()) {
             userCredentials.put(user.getNombreUsuario(), user.getContraseña());
         }
@@ -50,23 +52,32 @@ public class LoginController {
     public void handleBtnEnter(ActionEvent event){
         String user = txtLogin.getText();
         String password = txtPassword.getText();
-
-        if (autentificacionUser(user,password)) {
-            try {
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
-              
-                Parent root = loader.load();
-                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }catch (IOException e) {
-                throw new RuntimeException(e);
+        leer();//Mapa Usuarios-Contraseña
+        llenarAdministradores ();//Administradores
+        if (autentificacionUser(user, password)) {
+            System.out.println("Usuario encontrado");
+            if (distinguirAdministrador(user)) {
+                System.out.println("Administrador");
+                changeView(event);
+            } else {
+                System.out.println("No hay administradores.");
+                changeView(event);
             }
         } else {
             System.out.println("Autenticación fallida. Usuario o contraseña incorrecta.");
+        }
+    }
 
+    private void changeView(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -76,5 +87,36 @@ public class LoginController {
             return userCredentials.get(user).equals(password);
         }
         return false;
+    }
+
+    private void llenarAdministradores () {
+        con.selectUsuario();
+        for (User user : con.getUsuarios()) {
+            if (user.isAdministrador()) {
+                administradores.add(user);
+            }
+        }
+    }
+
+    private boolean distinguirAdministrador(String nombre_usuario) {
+        for (User user : administradores) {
+            if (user.getNombreUsuario().equals(nombre_usuario)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void handleBtnCreateUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/createUser.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
