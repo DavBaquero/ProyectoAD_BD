@@ -53,30 +53,14 @@ public class LoginController {
         }
     }
 
-
-    public void handleBtnEnter(ActionEvent event){
-        String user = txtLogin.getText();
-        String password = txtPassword.getText();
-        leer();//Mapa Usuarios-Contraseña
-        llenarAdministradores ();//Administradores
-        if (autentificacionUser(user, password)) {
-            nombreUsuario = txtLogin.getText();
-            System.out.println(nombreUsuario);
-            changeView(event);
-        } else {
-            lblErrorAut.setText("* Usuario o contraseña incorrectos.");
-            lblErrorAut.setStyle("-fx-text-fill: red;");
-            lblErrorAut.setStyle("-fx-font-style: italic;");
-        }
-    }
-
     // Método de login que valida las credenciales
     public void login(ActionEvent event) {
         leer();
+        llenarAdministradores();
         // Realizar validación de login (pseudocódigo)
         boolean isValid = autentificacionUser(txtLogin.getText(),txtPassword.getText());  // Suponiendo que tienes este método
-
         if (isValid) {
+            nombreUsuario = txtLogin.getText();
             // Si el login es válido, abrir la siguiente ventana
             try {
                 // Cambiar de escena a ViewNorUser
@@ -107,20 +91,6 @@ public class LoginController {
     public String getNombreUsuario(){
         return nombreUsuario;
     }
-
-    private void changeView(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private boolean autentificacionUser(String user, String password){
 
         if (userCredentials.containsKey(user)) {
@@ -129,7 +99,7 @@ public class LoginController {
         return false;
     }
 
-    private void llenarAdministradores () {
+    private void llenarAdministradores() {
         for (User user : con.selectUsuario()) {
             if (user.isAdministrador()) {
                 administradores.add(user);
