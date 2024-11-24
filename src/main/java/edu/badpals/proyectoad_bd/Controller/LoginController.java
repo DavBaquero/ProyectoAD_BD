@@ -5,6 +5,7 @@ import edu.badpals.proyectoad_bd.Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -43,11 +44,11 @@ public class LoginController {
 
     private HashMap<String, String> userCredentials = new HashMap<>();
     private ArrayList<User> administradores = new ArrayList<>();
+    private String nombreUsuario;
 
     @FXML
     private void leer(){
-        con.selectUsuario();
-        for (User user : con.getUsuarios()) {
+        for (User user :  con.selectUsuario()) {
             userCredentials.put(user.getNombreUsuario(), user.getContraseña());
         }
     }
@@ -59,19 +60,52 @@ public class LoginController {
         leer();//Mapa Usuarios-Contraseña
         llenarAdministradores ();//Administradores
         if (autentificacionUser(user, password)) {
-            System.out.println("Usuario encontrado");
-            if (distinguirAdministrador(user)) {
-                System.out.println("Administrador");
-                changeView(event);
-            } else {
-                System.out.println("No hay administradores.");
-                changeView(event);
-            }
+            nombreUsuario = txtLogin.getText();
+            System.out.println(nombreUsuario);
+            changeView(event);
         } else {
             lblErrorAut.setText("* Usuario o contraseña incorrectos.");
             lblErrorAut.setStyle("-fx-text-fill: red;");
             lblErrorAut.setStyle("-fx-font-style: italic;");
         }
+    }
+
+    // Método de login que valida las credenciales
+    public void login(ActionEvent event) {
+        leer();
+        // Realizar validación de login (pseudocódigo)
+        boolean isValid = autentificacionUser(txtLogin.getText(),txtPassword.getText());  // Suponiendo que tienes este método
+
+        if (isValid) {
+            // Si el login es válido, abrir la siguiente ventana
+            try {
+                // Cambiar de escena a ViewNorUser
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
+                Parent root = loader.load();
+                ViewNorUserController view = loader.getController();
+
+                // Establecer el LoginController para que ViewNorUserController tenga acceso
+                view.setLoginController(this);
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("User Dashboard");
+                view.credencialAdmin();
+                stage.show();
+
+
+
+            } catch (IOException e) {
+                System.err.println("Error loading the next scene: " + e.getMessage());
+            }
+        } else {
+            // Si el login falla, mostrar un mensaje de error o algo similar
+            System.out.println("Login failed");
+        }
+    }
+
+    public String getNombreUsuario(){
+        return nombreUsuario;
     }
 
     private void changeView(ActionEvent event) {
@@ -96,17 +130,16 @@ public class LoginController {
     }
 
     private void llenarAdministradores () {
-        con.selectUsuario();
-        for (User user : con.getUsuarios()) {
+        for (User user : con.selectUsuario()) {
             if (user.isAdministrador()) {
                 administradores.add(user);
             }
         }
     }
 
-    private boolean distinguirAdministrador(String nombre_usuario) {
+    public boolean distinguirAdministrador(String nombre) {
         for (User user : administradores) {
-            if (user.getNombreUsuario().equals(nombre_usuario)) {
+            if (user.getNombreUsuario().equals(nombre)) {
                 return true;
             }
         }

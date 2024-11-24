@@ -17,12 +17,14 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserSettingsController {
 
     ConnetBD con = new ConnetBD();
+    ArrayList<User> usuarios = con.selectUsuario();
 
     @FXML
     public TextField contraseñaUsuario;
@@ -50,29 +52,72 @@ public class UserSettingsController {
 
     @FXML
     public void initialize() {
-        // Llena el ComboBox
-        for (User usuario : con.selectUsuario()) {
-            cboUsuarios.getItems().add(usuario.getNombreUsuario());
-            // Agregar listener al ComboBox
-            cboUsuarios.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                // Llenar los TextField con datos del usuario seleccionado
-                if (newValue != null) {
-                    for (User user : con.selectUsuario()) {
-                        if (user.getNombreUsuario().equals(newValue)) {
-                            nombreUsuario.setText(user.getNombreUsuario());
-                            contraseñaUsuario.setText(user.getContraseña());
-                            break;
-                        }
+        llenarComboBox();
+        crearListener();
+    }
+
+    private void llenarComboBox() {
+        // Limpia los datos actuales del ComboBox para evitar duplicados
+        cboUsuarios.getItems().clear();
+        // Llena el ComboBox, verificando duplicados en la lista original
+        for (User usuario : usuarios) {
+            if (!cboUsuarios.getItems().contains(usuario.getNombreUsuario())) {
+                cboUsuarios.getItems().add(usuario.getNombreUsuario());
+            }
+        }
+    }
+
+    private void crearListener() {
+        // Configura el listener para manejar la selección del usuario
+        // El listener solo debe configurarse una vez
+        cboUsuarios.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Llenar los TextField con datos del usuario seleccionado
+            if (newValue != null) {
+                for (User user : con.selectUsuario()) {
+                    if (user.getNombreUsuario().equals(newValue)) {
+                        nombreUsuario.setText(user.getNombreUsuario());
+                        contraseñaUsuario.setText(user.getContraseña());
+                        break;
                     }
                 }
-            });
-        }
+            } else {
+                // Limpiar los campos si no hay selección
+                nombreUsuario.clear();
+                contraseñaUsuario.clear();
+            }
+        });
     }
 
 
     public void handleBtnBorrar(ActionEvent event) {
-        borrarUsuario(cboUsuarios.getSelectionModel().getSelectedItem());
+        // Obtén el usuario seleccionado en el ComboBox
+        String usuarioSeleccionado = cboUsuarios.getSelectionModel().getSelectedItem();
+
+        if (usuarioSeleccionado != null) {
+            // Borra el usuario de la base de datos
+            borrarUsuario(usuarioSeleccionado);
+
+            // Limpia los campos del formulario
+            nombreUsuario.clear();
+            contraseñaUsuario.clear();
+
+            // Actualiza la lista de usuarios después de borrar
+            usuarios.clear();
+            usuarios = con.selectUsuario();
+            System.out.println(usuarios);
+
+            // Actualiza el ComboBox con la lista actualizada
+            llenarComboBox();
+
+            // Mensaje de confirmación
+            lblModUser.setText("* Usuario " + usuarioSeleccionado + " borrado con éxito.");
+            lblModUser.setStyle("-fx-font-style: italic;");
+        } else {
+            lblModUser.setText("* Por favor, selecciona un usuario para borrar.");
+            lblModUser.setStyle("-fx-font-style: italic;");
+        }
     }
+
 
     public void borrarUsuario(String nombre_usuario) {
         String sqlDelete = "DELETE FROM USUARIO WHERE NOMBRE = ?";
@@ -134,7 +179,16 @@ public class UserSettingsController {
     }
 
     public void handleBtnModificar(ActionEvent event) {
-            actualizarUsuario(cboUsuarios.getSelectionModel().getSelectedItem(), nombreUsuario.getText(), contraseñaUsuario.getText());
+        // Obtiene el nombre del usuario seleccionado
+        String usuarioSeleccionado = cboUsuarios.getSelectionModel().getSelectedItem();
+
+        // Actualiza los datos en la base de datos
+        actualizarUsuario(usuarioSeleccionado, nombreUsuario.getText(), contraseñaUsuario.getText());
+
+        //Actualizar lista
+        usuarios = con.selectUsuario();
+
+
     }
 
     public void actualizarUsuario(String nombreUsuario, String nuevoNombre, String nuevaContraseña) {
@@ -156,6 +210,19 @@ public class UserSettingsController {
             }
         } catch (SQLException e) {
             System.out.println("Error al actualizar el usuario: " + e.getMessage());
+        }
+    }
+
+    public void handleBtnVolver(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/viewBD.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -56,9 +56,6 @@ public class ConnetBD {
         return usuarios;
     }
 
-    public ArrayList<User> getUsuarios() {
-        return usuarios;
-    }
 
     public static void connect(){
         try (Connection con = DriverManager.getConnection(URLV, USER, PASSWORD);

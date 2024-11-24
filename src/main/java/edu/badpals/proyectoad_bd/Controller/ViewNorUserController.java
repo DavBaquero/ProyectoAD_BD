@@ -77,6 +77,8 @@ public class ViewNorUserController {
     @FXML
     TextField nombreFicheroHab;
 
+    private LoginController loginController;
+
 
     @FXML
     public void initialize() {
@@ -104,6 +106,29 @@ public class ViewNorUserController {
         TableAg.setOnMouseClicked(event -> handleRowClickAg(event));
         TableHab.setOnMouseClicked(event -> handleRowClickHab(event));
         TableRol.setOnMouseClicked(event -> handleRowClickRol(event));
+    }
+
+    @FXML
+    Button btnAdminUser;
+
+    // Setter para pasar la instancia de LoginController
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
+    }
+
+    public void credencialAdmin() {
+        if (loginController != null) {
+            System.out.println(loginController.getNombreUsuario());
+            if (!loginController.distinguirAdministrador(loginController.getNombreUsuario())) {
+                btnAdminUser.setVisible(false);
+                System.out.println("NO");
+            } else {
+                btnAdminUser.setVisible(true);
+                System.out.println("Si");
+            }
+        } else {
+            System.out.println("loginController es nulo");
+        }
     }
 
     private ObservableList<AgenteDTO> getAgentesData() {
@@ -215,19 +240,6 @@ public class ViewNorUserController {
     @FXML
     Button btnVolverRol;
 
-    public void handleBtnVolver(ActionEvent event){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void handleBtnVolver(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
@@ -290,5 +302,18 @@ public class ViewNorUserController {
     }
 
 
+    @FXML
+    public void handleBtnAdminUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/userSettings.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
