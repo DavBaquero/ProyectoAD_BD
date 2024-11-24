@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginController {
-    String archivo = "src/main/resources/BD/users.txt";
     ConnetBD con = new ConnetBD();
 
     @FXML
@@ -106,75 +105,6 @@ public class LoginController {
             }
         }
         return false;
-    }
-
-    public void insertarUsuario(User usuario) {
-        String sql = "INSERT INTO USUARIO (NOMBRE, CONTRASEÑA, ADMINISTRADOR) VALUES (?, ?, ?)";
-        try {
-            PreparedStatement pstmt = con.connetUsuario().prepareStatement(sql);
-
-            pstmt.setString(1, usuario.getNombreUsuario());
-            pstmt.setString(2, usuario.getContraseña());
-            pstmt.setBoolean(3, usuario.isAdministrador());
-
-            pstmt.executeUpdate();
-            System.out.println("Usuario insertado: " + usuario.getNombreUsuario());
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public void asignarAdministrador(String nombre_usuario) {
-        String sqlSelect = "SELECT ADMINISTRADOR FROM USUARIO WHERE NOMBRE = ?";
-        String sqlUpdate = "UPDATE USUARIO SET ADMINISTRADOR = TRUE WHERE NOMBRE = ?";
-
-        try (
-             PreparedStatement pstmtSelect = con.connetUsuario().prepareStatement(sqlSelect);
-             PreparedStatement pstmtUpdate = con.connetUsuario().prepareStatement(sqlUpdate)) {
-
-            // Verificar si el usuario es administrador
-            pstmtSelect.setString(1, nombre_usuario);
-            ResultSet resultSet = pstmtSelect.executeQuery();
-
-            if (resultSet.next()) {
-                boolean esAdministrador = resultSet.getBoolean("ADMINISTRADOR");
-                if (esAdministrador) {
-                    System.out.println("El usuario ya es administrador.");
-                } else {
-                    // Asignar como administrador
-                    pstmtUpdate.setString(1, nombre_usuario);
-                    pstmtUpdate.executeUpdate();
-                    System.out.println("El usuario " + nombre_usuario + " ha sido asignado como administrador.");
-                }
-            } else {
-                System.out.println("El usuario no existe en la base de datos.");
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error durante la asignación del administrador: " + e.getMessage());
-        }
-    }
-    public void borrarUsuario(String nombre_usuario) {
-        String sqlDelete = "DELETE FROM USUARIO WHERE NOMBRE = ?";
-
-        // Crear una instancia de ConnetBD
-        ConnetBD con = new ConnetBD();
-
-        try (
-             PreparedStatement pstmt =  con.connetUsuario().prepareStatement(sqlDelete)) {
-
-            pstmt.setString(1, nombre_usuario);
-
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Usuario " + nombre_usuario + " ha sido borrado exitosamente.");
-            } else {
-                System.out.println("No se encontró el usuario " + nombre_usuario + " en la base de datos.");
-            }
-
-        } catch (SQLException e) {
-            System.err.println("Error al borrar el usuario: " + e.getMessage());
-        }
     }
 
     public void handleBtnCreateUser(ActionEvent event) {
