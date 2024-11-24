@@ -1,0 +1,102 @@
+[
+  {
+    "idAg": 2,
+    "nombreAg": "Gekko",
+    "nombreRol": "INICIADOR",
+    "habilidadC": "Mosh Pit",
+    "habilidadQ": "Dizzy",
+    "habilidadE": "Wingman",
+    "habilidadX": "Thrash",
+    "descripcion": "Gekko es un iniciador que despliega criaturas de su arsenal para desorientar y controlar el campo de batalla, proporcionando utilidad y ventaja estratégica a su equipo."
+  },
+  {
+    "idAg": 3,
+    "nombreAg": "Omen",
+    "nombreRol": "CONTROLADOR",
+    "habilidadC": "Pasos Sombríos",
+    "habilidadQ": "Paranoia",
+    "habilidadE": "Velo Tenebroso",
+    "habilidadX": "Desde las Sombras",
+    "descripcion": "Omen es un controlador sigiloso que puede desatar el caos desde las sombras, cegando a sus enemigos y teleportándose a nuevas ubicaciones para tomar ventaja en el combate."
+  },
+  {
+    "idAg": 9,
+    "nombreAg": "Viper",
+    "nombreRol": "CONTROLADOR",
+    "habilidadC": "Mordedura de Serpiente",
+    "habilidadQ": "Cortina Tóxica",
+    "habilidadE": "Nube Venenosa",
+    "habilidadX": "Pozo de la Víbora",
+    "descripcion": "Viper es una controladora que usa una variedad de dispositivos químicos para controlar el campo de batalla. Sus habilidades tóxicas pueden bloquear la visión enemiga, infligir daño y dividir a los oponentes."
+  },
+  {
+    "idAg": 10,
+    "nombreAg": "Harbor",
+    "nombreRol": "CONTROLADOR",
+    "habilidadC": "Marea Alta",
+    "habilidadQ": "Muro de Agua",
+    "habilidadE": "Cascada",
+    "habilidadX": "Tormenta Marina",
+    "descripcion": "Harbor es un controlador que utiliza sus habilidades acuáticas para manipular el campo de batalla, creando barreras de agua para bloquear la visión y proteger a sus aliados."
+  },
+  {
+    "idAg": 1,
+    "nombreAg": "Jett",
+    "nombreRol": "DUELISTA",
+    "habilidadC": "Viento de Cola",
+    "habilidadQ": "Explosión de Nube",
+    "habilidadE": "Corriente Ascendente",
+    "habilidadX": "Tormenta de Cuchillas",
+    "descripcion": "Jett es una duelista con gran agilidad. Su estilo de juego es veloz y evasivo, lo que la hace difícil de atrapar. Ella puede moverse rápidamente por el campo de batalla y atacar con letal precisión."
+  },
+  {
+    "idAg": 5,
+    "nombreAg": "Neon",
+    "nombreRol": "DUELISTA",
+    "habilidadC": "Campos Electrostáticos",
+    "habilidadQ": "Carrera Relámpago",
+    "habilidadE": "Rayo Aturdidor",
+    "habilidadX": "Explosión Relámpago",
+    "descripcion": "Neon es una duelista que puede moverse a gran velocidad y usar sus habilidades eléctricas para sorprender y eliminar a sus enemigos rápidamente."
+  },
+  {
+    "idAg": 6,
+    "nombreAg": "Reyna",
+    "nombreRol": "DUELISTA",
+    "habilidadC": "Cegar",
+    "habilidadQ": "Devorar",
+    "habilidadE": "Despreciar",
+    "habilidadX": "Emperatriz",
+    "descripcion": "Reyna es una duelista que se alimenta de las muertes de sus enemigos para volverse más poderosa, curarse y volverse invulnerable temporalmente."
+  },
+  {
+    "idAg": 4,
+    "nombreAg": "Chamber",
+    "nombreRol": "CENTINELA",
+    "habilidadC": "Rendezvous",
+    "habilidadQ": "Marca Registrada",
+    "habilidadE": "Cazador de Cabezas",
+    "habilidadX": "Tour de Force",
+    "descripcion": "Chamber es un centinela altamente sofisticado con habilidades que le permiten controlar el campo de batalla con precisión letal. Puede colocar trampas, teletransportarse y usar un armamento avanzado para mantener a raya a sus enemigos."
+  },
+  {
+    "idAg": 7,
+    "nombreAg": "Sage",
+    "nombreRol": "CENTINELA",
+    "habilidadC": "Orbe Barrera",
+    "habilidadQ": "Orbe Curativo",
+    "habilidadE": "Orbe de Lentitud",
+    "habilidadX": "Resurrección",
+    "descripcion": "Sage es una centinela que proporciona un sólido soporte defensivo a su equipo. Sus habilidades permiten curar a sus aliados, revivir a los caídos y bloquear el avance enemigo con barreras y orbes lentificadores."
+  },
+  {
+    "idAg": 8,
+    "nombreAg": "Killjoy",
+    "nombreRol": "CENTINELA",
+    "habilidadC": "Bot de Alarmas",
+    "habilidadQ": "Nanoenjambre",
+    "habilidadE": "Torreta",
+    "habilidadX": "Confinamiento",
+    "descripcion": "Killjoy es una centinela que usa su ingenio y tecnología avanzada para controlar el campo de batalla. Sus dispositivos pueden revelar, dañar y ralentizar a los enemigos, y su ultimate puede deshabilitar a todos los enemigos en un área amplia."
+  }
+]

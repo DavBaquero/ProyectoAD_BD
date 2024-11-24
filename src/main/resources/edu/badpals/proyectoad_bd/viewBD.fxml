@@ -65,7 +65,7 @@
                         <Button fx:id="btnExportarAg" layoutX="731.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleBtnExportarAgenteJson" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
                         <Label layoutX="662.0" layoutY="18.0" prefHeight="17.0" prefWidth="139.0" text="Exportar agente como:" />
                         <TextField fx:id="nombreFicheroAg" layoutX="657.0" layoutY="36.0" />
-
+                        <Button fx:id="btnAdminUser" layoutY="151.0" mnemonicParsing="false" onAction="#handleBtnAdminUser" prefHeight="25.0" prefWidth="136.0" text="Administrar Usuarios" />
                      </children>
                   </AnchorPane>
                </content>
@@ -86,9 +86,8 @@
                         <Label fx:id="lblDescripHab" alignment="TOP_LEFT" layoutX="297.0" layoutY="25.0" prefHeight="124.0" prefWidth="508.0" text="Descripción: " textAlignment="JUSTIFY" wrapText="true" />
                         <Label fx:id="lblModNomHAG" layoutX="71.0" layoutY="51.0" prefHeight="20.0" prefWidth="220.0" text="mod" />
                         <Label fx:id="lblModNomHab" layoutX="71.0" layoutY="129.0" prefHeight="20.0" prefWidth="220.0" text="mod" />
-                        <Button fx:id="btnVolverHab" layoutX="748.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleBtnVolver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
-                        <Button fx:id="btnExportarHab" layoutX="674.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
-                        
+                        <Button fx:id="btnVolverHab" layoutX="740.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleBtnVolver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
+                        <Button fx:id="btnExportarHab" layoutX="740.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleBtnExportarHab" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
                         <Label layoutX="672.0" layoutY="28.0" prefHeight="17.0" prefWidth="139.0" text="Exportar agente como:" />
                         <TextField fx:id="nombreFicheroHab" layoutX="667.0" layoutY="46.0" />
                      </children>
