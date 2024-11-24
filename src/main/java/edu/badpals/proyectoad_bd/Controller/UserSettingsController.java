@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -45,6 +46,9 @@ public class UserSettingsController {
     public Button btnVolver;
 
     @FXML
+    Label lblModUser;
+
+    @FXML
     public void initialize() {
         // Llena el ComboBox
         for (User usuario : con.selectUsuario()) {
@@ -79,9 +83,11 @@ public class UserSettingsController {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Usuario " + nombre_usuario + " ha sido borrado exitosamente.");
+                lblModUser.setText("* Usuario " + nombre_usuario + " ha sido borrado exitosamente.");
+                lblModUser.setStyle("-fx-font-style: italic;");
             } else {
-                System.out.println("No se encontró el usuario " + nombre_usuario + " en la base de datos.");
+                lblModUser.setText("* No se encontró el usuario " + nombre_usuario + " en la base de datos.");
+                lblModUser.setStyle("-fx-font-style: italic;");
             }
 
         } catch (SQLException e) {
@@ -109,12 +115,14 @@ public class UserSettingsController {
             if (resultSet.next()) {
                 boolean esAdministrador = resultSet.getBoolean("ADMINISTRADOR");
                 if (esAdministrador) {
-                    System.out.println("El usuario ya es administrador.");
+                    lblModUser.setText("* El usuario " + nombre_usuario + " ya es administrador.");
+                    lblModUser.setStyle("-fx-font-style: italic;");
                 } else {
                     // Asignar como administrador
                     pstmtUpdate.setString(1, nombre_usuario);
                     pstmtUpdate.executeUpdate();
-                    System.out.println("El usuario " + nombre_usuario + " ha sido asignado como administrador.");
+                    lblModUser.setText("* El usuario " + nombre_usuario + " ha sido asignado como administrador.");
+                    lblModUser.setStyle("-fx-font-style: italic;");
                 }
             } else {
                 System.out.println("El usuario no existe en la base de datos.");
@@ -140,9 +148,11 @@ public class UserSettingsController {
             // Ejecutar la actualización
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Usuario actualizado con éxito.");
+                lblModUser.setText("* Usuario actualizado con éxito.");
+                lblModUser.setStyle("-fx-font-style: italic;");
             } else {
-                System.out.println("No se encontró el usuario para actualizar.");
+                lblModUser.setText("* No se encontró el usuario en la base de datos.");
+                lblModUser.setStyle("-fx-font-style: italic;");
             }
         } catch (SQLException e) {
             System.out.println("Error al actualizar el usuario: " + e.getMessage());
