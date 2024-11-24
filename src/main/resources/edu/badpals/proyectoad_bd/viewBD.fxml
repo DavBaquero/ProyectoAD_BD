@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -12,7 +13,7 @@
    <children>
        <TabPane fx:id="TabPaneAg" prefHeight="511.0" prefWidth="827.0" style="-fx-background-color: #c0353b;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab fx:id="TabAg" text="Personajes">
+            <Tab fx:id="TabAg" text="Agentes">
                <content>
                   <AnchorPane prefHeight="482.0" prefWidth="822.0" style="-fx-background-color: #c0353b;">
                      <children>
@@ -38,27 +39,29 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblHabC" layoutX="55.0" layoutY="111.0" prefHeight="20.0" prefWidth="155.0" text="C:" wrapText="true">
+                        <Label fx:id="lblHabC" alignment="TOP_LEFT" layoutX="55.0" layoutY="111.0" prefHeight="50.0" prefWidth="155.0" text="C:" wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblHabE" layoutX="414.0" layoutY="111.0" prefHeight="20.0" prefWidth="155.0" text="E:" wrapText="true">
+                        <Label fx:id="lblHabE" alignment="TOP_LEFT" layoutX="414.0" layoutY="111.0" prefHeight="50.0" prefWidth="155.0" text="E:" wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblHabQ" layoutX="231.0" layoutY="111.0" prefHeight="20.0" prefWidth="155.0" text="Q:" wrapText="true">
+                        <Label fx:id="lblHabQ" alignment="TOP_LEFT" layoutX="231.0" layoutY="111.0" prefHeight="50.0" prefWidth="155.0" text="Q:" wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblHabX" layoutX="585.0" layoutY="111.0" prefHeight="20.0" prefWidth="155.0" text="X:" wrapText="true" />
-                        <Label fx:id="lblDescAg" alignment="TOP_LEFT" cache="true" contentDisplay="CENTER" layoutX="432.0" layoutY="14.0" prefHeight="83.0" prefWidth="373.0" text="Descripcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" wrapText="true">
+                        <Label fx:id="lblHabX" alignment="TOP_LEFT" layoutX="585.0" layoutY="111.0" prefHeight="50.0" prefWidth="155.0" text="X:" wrapText="true" />
+                        <Label fx:id="lblDescAg" alignment="TOP_LEFT" cache="true" contentDisplay="CENTER" layoutX="432.0" layoutY="14.0" prefHeight="83.0" prefWidth="373.0" text="Descripción: " wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
+                        <Button fx:id="btnVolverAg" layoutX="753.0" layoutY="151.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Volver" />
+                        <Button fx:id="btnExportarAg" layoutX="752.0" layoutY="111.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
                      </children>
                   </AnchorPane>
                </content>
@@ -76,9 +79,11 @@
                         </TableView>
                         <Label layoutX="46.0" layoutY="25.0" prefHeight="20.0" prefWidth="220.0" text="Nombre del Agente: " />
                         <Label layoutX="46.0" layoutY="97.0" prefHeight="20.0" prefWidth="270.0" text="Nombre de la habilidad:" textAlignment="JUSTIFY" wrapText="true" />
-                        <Label fx:id="lblDescripHab" alignment="TOP_LEFT" layoutX="355.0" layoutY="35.0" prefHeight="124.0" prefWidth="410.0" text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textAlignment="JUSTIFY" wrapText="true" />
+                        <Label fx:id="lblDescripHab" alignment="TOP_LEFT" layoutX="355.0" layoutY="35.0" prefHeight="124.0" prefWidth="410.0" text="Descripción: " textAlignment="JUSTIFY" wrapText="true" />
                         <Label fx:id="lblModNomHAG" layoutX="71.0" layoutY="51.0" prefHeight="20.0" prefWidth="220.0" text="mod" />
                         <Label fx:id="lblModNomHab" layoutX="71.0" layoutY="129.0" prefHeight="20.0" prefWidth="220.0" text="mod" />
+                        <Button fx:id="btnVolverHab" layoutX="740.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Volver" />
+                        <Button fx:id="btnExportarHab" layoutX="740.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
                      </children>
                   </AnchorPane>
               </content>
@@ -94,9 +99,10 @@
                               <TableColumn fx:id="Col_Nom_Agente" prefWidth="350.0" text="PERSONAJES" />
                           </columns>
                         </TableView>
+                        <Button fx:id="btnVolverRol" layoutX="763.0" layoutY="150.0" mnemonicParsing="false" text="Volver" />
                         <Label layoutX="40.0" layoutY="39.0" prefHeight="20.0" prefWidth="220.0" text="Nombre de rol: " />
                         <Label layoutX="40.0" layoutY="93.0" prefHeight="20.0" prefWidth="220.0" text="Personaje seleccionado: " />
-                        <Label fx:id="lblDescripRol" alignment="TOP_LEFT" layoutX="358.0" layoutY="50.0" prefHeight="85.0" prefWidth="440.0" text="Descripcionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" textAlignment="JUSTIFY" wrapText="true">
+                        <Label fx:id="lblDescripRol" alignment="TOP_LEFT" layoutX="358.0" layoutY="50.0" prefHeight="85.0" prefWidth="440.0" text="Descripción: " textAlignment="JUSTIFY" wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
