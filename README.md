@@ -86,8 +86,77 @@ Cuando pulses un rol, te saldrá algo como esto:
 ![Imagen_AppR_Click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Rol_click.png)
 
 ## MANUAL TÉCNICO
-En la paquete de Controller, están ubicados los controladores de las ventas y sus funciones *tratado en el 4.2*
-En el paquete Modelo, están ubicados las clases y los métodos de funcionamiento de la aplicación *tratado en el 4.3*.
+En la paquete de Controller, están ubicados los controladores de las ventas y sus funciones *tratado en el 3.2*
+En el paquete Modelo, están ubicados las clases y los métodos de funcionamiento de la aplicación *tratado en el 3.3*.
+
+### 3.2 Package Controller
+#### CreateUserController
+`handleBtnCreateUser:` Este método se encarga de comprobar si el usuario se puede crear: en caso de que no coinicdan las contraseñas enseña un label diciendo que no coinciden, en caso de que ya exista el usuario el label mostrará que ya existe y sino saldrá al login para que puedas iniciar sesión.
+
+`insertUser:` Es el encargado de hacer la query de insertar en la base de datos de ususario.
+
+`checkPassword:` Es el encargado de cheackerar que la contraseña se repita para poder registrarse.
+
+`checkUserName:` Es el método encargado de que no exista el nombre del ususario a la hora de crear.
+
+`returnLogin:` Es el método que se encarga de que cuando se cree el nuevo usuario vuelva directamente al login.
+
+`handleBtnVolver` En caso de que no se quiera crear usuario, está el botón de volver, ese es el método encargado de volver hacia el login.
+
+***
+
+#### UserSettingsController
+
+`llenarComboBox:` Es el método encargado de llenar la ComboBox con los nombres de usuario.
+
+`crearListener:` Es el método encargado de cargar los datos en los Text al seleccionar el combobox y el encargado de enviarlo si se realizan cambios.
+
+`handleBtnBorrar:` Es el encargado de llamar al método que borra el ususario que se ha seleccionado usando.
+
+`borrarUsuario:` Es el método que hace la query de borrar usuarios.
+
+`handleBtnAdministrador:` Es el método encargado de asignar que un usuario sea administrador.
+
+`asignarAdministrador:` Es el método encargado de usar la query de update para actualizar al administrador.
+
+`handleBtnModificar:` Es el método encargado de que al darle a modificar, llame a la actualización.
+
+`actualizarUsuario:` Es el método que se encarga de actualizar al usuario con una query Update.
+
+`handleBtnVolver:` Es el método que se encarga del botón de volver al login. 
+***
+
+#### LoginController
+
+`leer:` Se encarga de leer un hashmap con los usuarios y las contraseñas
+
+`login:` Es el método encargado de hacer el login, para diferenciar si son administradores o no, justo al darle al botón de entrar.
+
+`getNombreUsuario:` Es un getter para obtener el nombre de usuario.
+
+`llenarAdministradores:` Es el método encargado de llenar un ArrayList con los ususarios que sean administradores.
+
+`distinguirAdministrador:` Es un método encargado de diferenciar si administradores o si no son administradores.
+
+`handleBtnCreateUser:` Es el método que cambia de ventana para crear un usuario.
+
+`autentificacionUser:` Es un método que autentifica si el usuario está en la base de datos.
+***
+``
+#### ViewNorUserController 
+
+`initialize:` Método que se ejecuta nada más se inicia y inicializa todos los datos de los datos de las columnas.
+
+`setLoginController:` Mantenemos la instancia del login para poder diferenciar entre administrador y usuario normal.
+
+`credencialAdmin:` Método encargado de dar visibilidad al botón del administrador.
+
+`getAgentesData:` Método encargado de recibir los datos de la base de datos
+
+`handleRowClickAg:` Método que cambia los label al pulsar un agente.
+
+
+
 
 
 ## REPARTO DE TAREAS
