@@ -142,7 +142,7 @@ En el paquete Modelo, están ubicados las clases y los métodos de funcionamient
 
 `autentificacionUser:` Es un método que autentifica si el usuario está en la base de datos.
 ***
-``
+
 #### ViewNorUserController 
 
 `initialize:` Método que se ejecuta nada más se inicia y inicializa todos los datos de los datos de las columnas.
@@ -151,13 +151,85 @@ En el paquete Modelo, están ubicados las clases y los métodos de funcionamient
 
 `credencialAdmin:` Método encargado de dar visibilidad al botón del administrador.
 
-`getAgentesData:` Método encargado de recibir los datos de la base de datos
+`getAgentesData:` Método encargado de recibir los datos de los agentes de la base de datos.
 
 `handleRowClickAg:` Método que cambia los label al pulsar un agente.
 
+`getHabData:` Método encargado de recibir los datos de las habilidades de la base de datos.
 
+`handleRowClickHab:`  Método que cambia los label al pulsar una habilidad.
 
+`getRolData:` Método encargado de recibir los datos de los roles de la base de datos.
 
+`handleBtnVolver:` Es el método que se encarga del botón de volver al login.
+
+`handleBtnExportarAgenteJson:` Método encargado de exportar los agentes a json.
+
+`guardarAgentesEnJson:` Método encargado de crear la estructura del json para los agentes.
+
+`convertirObservableListAArrayListAg:` Método para convertir la ObservableList a ArrayList, para poder exportar los datos de Agente.
+
+`handleBtnExportarHab:` Método encargado de exportar las habilidades a json.
+
+`guardarHabilidadEnJson:` Método encargado de crear la estructura del json para las habilidades.
+
+`convertirObservableListAArrayListHab:` Método para convertir la ObservableList a ArrayList, para poder exportar los datos de Habilidades.
+
+`handleBtnAdminUser:` Método que se encarga de realizar el cambio para el administrador
+
+***
+
+### 3.3 Package Model
+#### AgenteDTO
+`Contructor, getters y setters:` Esta clase se ha realizado para gestionar la carga de los agentes en la tabla y sus label.
+***
+#### Agente
+`Contructor, getters y setters:` Esta clase se ha realizado almacenar los agentes.
+
+#### HabilidadDTO
+`Contructor, getters y setters:` Esta clase se ha realizado para gestionar la carga de las habilidades en la tabla y sus label.
+***
+
+#### Habilidad
+`Contructor, getters y setters:` Esta clase se ha realizado almacenar las habilidades.
+***
+
+#### Habilidades
+`Enum:` Es una clase de enum, para las habilidades, tiene sus respectivos `getters, constructor y comprobador`
+***
+
+#### RolDTO
+`Contructor, getters y setters:` Esta clase se ha realizado para gestionar la carga de los roles en la tabla y sus label.
+***
+
+#### Rol
+`Contructor, getters y setters:` Esta clase se ha realizado almacenar los roles.
+***
+
+#### Roles
+`Enum:` Es una clase de enum, para las habilidades, tiene sus respectivos `getters, constructor y comprobador`
+***
+
+#### User
+`Contructor, getters y setters:` Esta clase se ha realizado almacenar los roles.
+***
+
+#### ConnetBD
+`connetUsuario:` Método realizado para conectarse a la base de datos de usuarios.
+
+`selectUsuario:` Metodo realizado para seleccionar los usuarios con una query.
+
+`procesarUsuarios:` Método realizado para almacenar los usuarios.
+
+`connect:` Método realizado apra conectarse a la base de datos de valorant.
+
+`getAgentesTab:` Método que se encarga de hacer una query combinando tablas para obtener los datos de la tabla agentes.
+
+`getHabTab:` Método que se encarga de hacer una query combinando tablas para obtener los datos de la tabla habilidades.
+
+`getRolTab:` Método que se encarga de hacer una query combinando tablas para obtener los datos de la tabla roles.
+
+***
 
 ## REPARTO DE TAREAS
 - Apartado de agentes: David
@@ -197,8 +269,8 @@ Si en algún momento se continúa con la aplicación, se podría añadir la bús
 ***
 
 ## CONCLUSIÓN Y TIEMPO DEDICADO
-El tiempo dedicado de David es aproximadamente de: 17h <br/>
-El tiempo dedicado de Samuel es aproximadamente de : 17h
+El tiempo dedicado de David es aproximadamente de: 18h <br/>
+El tiempo dedicado de Samuel es aproximadamente de : 18h
 
 ### 8.1  Conclusión:
 Hemos aumentado nuestro control en cuanto al JavaFX y trabajar con ello, ya que ha sido más rápido y eficaz, además de que hemos puesto en práctica tanto el acceso a bases de datos como el control de errores en los códigos.
