@@ -1,0 +1,242 @@
+[
+  {
+    "idAg": 1,
+    "nombreag": "Jett",
+    "nombreHab": "Corriente Ascendente",
+    "descripcion": "Propúlsate hacia arriba rápidamente. Esta habilidad permite a Jett acceder a posiciones elevadas y escapar de situaciones peligrosas con rapidez."
+  },
+  {
+    "idAg": 1,
+    "nombreag": "Jett",
+    "nombreHab": "Explosión de Nube",
+    "descripcion": "Lanza una nube de niebla que bloquea la visión durante unos segundos. Úsala para crear cobertura y desorientar a los enemigos."
+  },
+  {
+    "idAg": 1,
+    "nombreag": "Jett",
+    "nombreHab": "Tormenta de Cuchillas",
+    "descripcion": "Lanza cuchillos mortales que infligen daño significativo a los enemigos. Esta habilidad es perfecta para combates a corta distancia y puede asegurar eliminaciones rápidas."
+  },
+  {
+    "idAg": 1,
+    "nombreag": "Jett",
+    "nombreHab": "Viento de Cola",
+    "descripcion": "Desplázate rápidamente hacia adelante. Usa esta habilidad para esquivar ataques y cerrar la distancia con los enemigos de manera instantánea."
+  },
+  {
+    "idAg": 2,
+    "nombreag": "Gekko",
+    "nombreHab": "Dizzy",
+    "descripcion": "Dizzy lanza ráfagas explosivas que ciegan a los enemigos que están en su línea de visión. Una vez lanzado, Dizzy se despliega en el aire y dispara ráfagas a los enemigos en su campo de visión."
+  },
+  {
+    "idAg": 2,
+    "nombreag": "Gekko",
+    "nombreHab": "Mosh Pit",
+    "descripcion": "Mosh se lanza como una granada que se expande tras una breve demora y explota en un área grande, infligiendo daño significativo a todos los enemigos dentro del área afectada."
+  },
+  {
+    "idAg": 2,
+    "nombreag": "Gekko",
+    "nombreHab": "Thrash",
+    "descripcion": "Thrash se desplaza hacia adelante y puede ser dirigido a un área específica. Al llegar a su destino, Thrash se lanza hacia adelante y se estrella contra el suelo, aturdiendo a todos los enemigos en un área grande."
+  },
+  {
+    "idAg": 2,
+    "nombreag": "Gekko",
+    "nombreHab": "Wingman",
+    "descripcion": "Wingman se desplaza hacia adelante y busca enemigos. Al detectar un enemigo, Wingman lanza una explosión de conmoción que aturde a todos los enemigos cercanos. Además, Wingman puede ser utilizado para plantar o desactivar el Spike."
+  },
+  {
+    "idAg": 3,
+    "nombreag": "Omen",
+    "nombreHab": "Desde las Sombras",
+    "descripcion": "Selecciona cualquier lugar en el mapa para teletransportarse y aparecer en forma de sombra. Si Omen muere en su forma de sombra, volverá a su ubicación original."
+  },
+  {
+    "idAg": 3,
+    "nombreag": "Omen",
+    "nombreHab": "Paranoia",
+    "descripcion": "Lanza un proyectil de sombras en línea recta, atravesando paredes y cegando a todos los jugadores que toca."
+  },
+  {
+    "idAg": 3,
+    "nombreag": "Omen",
+    "nombreHab": "Pasos Sombríos",
+    "descripcion": "Equipa una habilidad que permite elegir una ubicación cercana para teletransportarse después de un breve retraso."
+  },
+  {
+    "idAg": 3,
+    "nombreag": "Omen",
+    "nombreHab": "Velo Tenebroso",
+    "descripcion": "Equipa una esfera de sombras y lanza una nube de sombra que bloquea la visión en su área. Puede cargarse para aumentar la distancia."
+  },
+  {
+    "idAg": 4,
+    "nombreag": "Chamber",
+    "nombreHab": "Cazador de Cabezas",
+    "descripcion": "Equipa una pistola pesada que dispara con precisión letal. Cada disparo cuesta una cantidad de créditos y tiene un gran impacto."
+  },
+  {
+    "idAg": 4,
+    "nombreag": "Chamber",
+    "nombreHab": "Marca Registrada",
+    "descripcion": "Coloca una trampa que escanea el área en busca de enemigos. Al detectar un enemigo, la trampa reduce significativamente la velocidad de movimiento del enemigo atrapado."
+  },
+  {
+    "idAg": 4,
+    "nombreag": "Chamber",
+    "nombreHab": "Rendezvous",
+    "descripcion": "Coloca un anclaje de teletransporte. Mientras estés en el alcance del anclaje, puedes reactivar la habilidad para teletransportarte instantáneamente al anclaje. El anclaje puede ser recogido y redeployado."
+  },
+  {
+    "idAg": 4,
+    "nombreag": "Chamber",
+    "nombreHab": "Tour de Force",
+    "descripcion": "Equipa un poderoso rifle de francotirador que mata a cualquier enemigo con un impacto directo. Las muertes crean un área que ralentiza a los jugadores atrapados en su radio."
+  },
+  {
+    "idAg": 5,
+    "nombreag": "Neon",
+    "nombreHab": "Campos Electrostáticos",
+    "descripcion": "Crea un área de energía eléctrica que inflige daño constante a los enemigos dentro del área."
+  },
+  {
+    "idAg": 5,
+    "nombreag": "Neon",
+    "nombreHab": "Carrera Relámpago",
+    "descripcion": "Neon corre a gran velocidad durante un corto período de tiempo, permitiéndole cruzar el campo de batalla rápidamente."
+  },
+  {
+    "idAg": 5,
+    "nombreag": "Neon",
+    "nombreHab": "Explosión Relámpago",
+    "descripcion": "Neon desata una explosión masiva de energía eléctrica, causando gran daño a todos los enemigos en su radio."
+  },
+  {
+    "idAg": 5,
+    "nombreag": "Neon",
+    "nombreHab": "Rayo Aturdidor",
+    "descripcion": "Lanza un rayo eléctrico que aturde a los enemigos en su camino, dejándolos vulnerables a los ataques."
+  },
+  {
+    "idAg": 6,
+    "nombreag": "Reyna",
+    "nombreHab": "Cegar",
+    "descripcion": "Lanza un ojo etéreo que puede atravesar paredes. Este ojo ciega a todos los enemigos que lo miran fijamente."
+  },
+  {
+    "idAg": 6,
+    "nombreag": "Reyna",
+    "nombreHab": "Despreciar",
+    "descripcion": "Usa un orbe de alma para volverse invulnerable e invisible durante un breve período de tiempo. La duración se incrementa si se usa junto con Emperatriz."
+  },
+  {
+    "idAg": 6,
+    "nombreag": "Reyna",
+    "nombreHab": "Devorar",
+    "descripcion": "Recoge orbes de las almas de los enemigos muertos para curarse durante un breve período de tiempo. Si es usada junto con Emperatriz, la curación es automática y no consume carga."
+  },
+  {
+    "idAg": 6,
+    "nombreag": "Reyna",
+    "nombreHab": "Emperatriz",
+    "descripcion": "Entra en un estado de frenesí donde aumenta su tasa de fuego y reduce significativamente el tiempo de reutilización de sus habilidades. Las eliminaciones reinician la duración de esta habilidad."
+  },
+  {
+    "idAg": 7,
+    "nombreag": "Sage",
+    "nombreHab": "Orbe Barrera",
+    "descripcion": "Crea una barrera sólida y destructible que puede bloquear el paso enemigo o proteger una área crítica."
+  },
+  {
+    "idAg": 7,
+    "nombreag": "Sage",
+    "nombreHab": "Orbe Curativo",
+    "descripcion": "Lanza un orbe que cura gradualmente a un aliado o a sí misma durante varios segundos."
+  },
+  {
+    "idAg": 7,
+    "nombreag": "Sage",
+    "nombreHab": "Orbe de Lentitud",
+    "descripcion": "Lanza un orbe que, al impactar contra el suelo, crea un campo que ralentiza a todos los que lo atraviesan."
+  },
+  {
+    "idAg": 7,
+    "nombreag": "Sage",
+    "nombreHab": "Resurrección",
+    "descripcion": "Revive a un aliado caído, devolviéndole a la vida con salud completa."
+  },
+  {
+    "idAg": 8,
+    "nombreag": "Killjoy",
+    "nombreHab": "Bot de Alarmas",
+    "descripcion": "Despliega un bot que caza enemigos y detona cuando están cerca, aplicando un efecto de vulnerabilidad a los enemigos alcanzados."
+  },
+  {
+    "idAg": 8,
+    "nombreag": "Killjoy",
+    "nombreHab": "Confinamiento",
+    "descripcion": "Despliega un dispositivo que, tras un breve retraso, detiene y deshabilita a todos los enemigos en un área grande, dejándolos vulnerables a ataques."
+  },
+  {
+    "idAg": 8,
+    "nombreag": "Killjoy",
+    "nombreHab": "Nanoenjambre",
+    "descripcion": "Lanza una granada que se despliega en un enjambre de nanobots, infligiendo daño a los enemigos que se encuentren en el área afectada."
+  },
+  {
+    "idAg": 8,
+    "nombreag": "Killjoy",
+    "nombreHab": "Torreta",
+    "descripcion": "Despliega una torreta que dispara a los enemigos en un cono frontal, proporcionándote información sobre su ubicación y ayudando a infligir daño."
+  },
+  {
+    "idAg": 9,
+    "nombreag": "Viper",
+    "nombreHab": "Cortina Tóxica",
+    "descripcion": "Despliega una larga línea de emisores que, una vez activados, crean una pared alta de gas tóxico que bloquea la visión y daña a los enemigos que la atraviesan."
+  },
+  {
+    "idAg": 9,
+    "nombreag": "Viper",
+    "nombreHab": "Mordedura de Serpiente",
+    "descripcion": "Dispara un proyectil de toxina que explota al impactar en el suelo, creando un charco de ácido que daña a los enemigos que lo tocan."
+  },
+  {
+    "idAg": 9,
+    "nombreag": "Viper",
+    "nombreHab": "Nube Venenosa",
+    "descripcion": "Lanza un dispositivo que se activa para crear una nube de gas venenoso. Puede ser reutilizada varias veces y recogida para ser lanzada de nuevo."
+  },
+  {
+    "idAg": 9,
+    "nombreag": "Viper",
+    "nombreHab": "Pozo de la Víbora",
+    "descripcion": "Expulsa una nube de gas tóxico en un área grande, reduciendo la visión y la salud máxima de los enemigos dentro de ella. La nube dura indefinidamente mientras Viper permanezca dentro de la nube."
+  },
+  {
+    "idAg": 10,
+    "nombreag": "Harbor",
+    "nombreHab": "Cascada",
+    "descripcion": "Lanza una ola de agua que avanza en línea recta, atravesando paredes y dañando a los enemigos en su camino."
+  },
+  {
+    "idAg": 10,
+    "nombreag": "Harbor",
+    "nombreHab": "Marea Alta",
+    "descripcion": "Levanta una barrera de agua en una ubicación seleccionada, bloqueando la visión y proporcionando cobertura."
+  },
+  {
+    "idAg": 10,
+    "nombreag": "Harbor",
+    "nombreHab": "Muro de Agua",
+    "descripcion": "Crea un muro de agua que bloquea la visión y desacelera a los enemigos que lo atraviesan."
+  },
+  {
+    "idAg": 10,
+    "nombreag": "Harbor",
+    "nombreHab": "Tormenta Marina",
+    "descripcion": "Invoca una tormenta masiva que cubre una amplia área, cegando y ralentizando a los enemigos atrapados en su radio."
+  }
+]
