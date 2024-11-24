@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -55,13 +56,16 @@
                            </font>
                         </Label>
                         <Label fx:id="lblHabX" alignment="TOP_LEFT" layoutX="585.0" layoutY="111.0" prefHeight="50.0" prefWidth="155.0" text="X:" wrapText="true" />
-                        <Label fx:id="lblDescAg" alignment="TOP_LEFT" cache="true" contentDisplay="CENTER" layoutX="432.0" layoutY="14.0" prefHeight="83.0" prefWidth="373.0" text="Descripción: " wrapText="true">
+                        <Label fx:id="lblDescAg" alignment="TOP_LEFT" cache="true" contentDisplay="CENTER" layoutX="227.0" layoutY="18.0" prefHeight="83.0" prefWidth="373.0" text="Descripción: " wrapText="true">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
                         <Button fx:id="btnVolverAg" layoutX="753.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleBtnVolver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
-                        <Button fx:id="btnExportarAg" layoutX="752.0" layoutY="111.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
+                        <Button fx:id="btnExportarAg" layoutX="731.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleBtnExportarAgenteJson" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
+                        <Label layoutX="662.0" layoutY="18.0" prefHeight="17.0" prefWidth="139.0" text="Exportar agente como:" />
+                        <TextField fx:id="nombreFicheroAg" layoutX="657.0" layoutY="36.0" />
+
                      </children>
                   </AnchorPane>
                </content>
@@ -84,6 +88,9 @@
                         <Label fx:id="lblModNomHab" layoutX="71.0" layoutY="129.0" prefHeight="20.0" prefWidth="220.0" text="mod" />
                         <Button fx:id="btnVolverHab" layoutX="748.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleBtnVolver" prefHeight="25.0" prefWidth="65.0" text="Volver" />
                         <Button fx:id="btnExportarHab" layoutX="674.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Exportar" />
+                        
+                        <Label layoutX="672.0" layoutY="28.0" prefHeight="17.0" prefWidth="139.0" text="Exportar agente como:" />
+                        <TextField fx:id="nombreFicheroHab" layoutX="667.0" layoutY="46.0" />
                      </children>
                   </AnchorPane>
               </content>
