@@ -89,106 +89,47 @@ Cuando pulses un rol, te saldrá algo como esto:
 En la paquete de Controller, están ubicados los controladores de las ventas y sus funciones *tratado en el 4.2*
 En el paquete Modelo, están ubicados las clases y los métodos de funcionamiento de la aplicación *tratado en el 4.3*.
 
-***
-
-### 4.1 Requisitos de uso
-Es necesario tener instalado **javafx** y el **jdk de java 17**.
-
-***
-
-### 4.2 Paquete Controller
-
-#### LoginController
-
-`leer:` Este método se encarga de leer y dividir usuario y contraseña de un [archivo txt](https://github.com/Samuyo/ProyectJSON_AD/blob/main/src/main/resources/BD/users.txt) que guarda los usuarios y se lo pasa a un `HashMap`.
-
-`autentificacionUser:` Entra al `HashMap` y verifica que el valor de la contraseña es igual a la contraseña que se le pasa más adelante en el método `handleBtnEnter`.
-
-`handleBtnEnter`: Este metodo es el del botón Enter, antes de activarse, obtiene el texto que se le pasa por teclado a la aplicación, tanto del usuario como de la contraseña, si el método `autentificacionUser` devuelve `True`, entonces entra, carga, obtiene el estado y muestra la pantalla de `Search`.
-
-#### AgentesController
-
-`handlebtnReturn:` Es el botón encargado de volver al apartado de busqueda de agentes. Básicamente, carga la venta de `search.fxml`, obitiene el estado en el que está y luego muesta la ventana.
-
-`accesoAPI:` Es el método encargado de acceder a la API por un objeto `URL`, hace un `GET` y obtiene la respuesta. Después comprueba que la respuesta sea igual que lo que hay, si es así, lee cada linea y la guarda en String.
-
-`procesarRespuesta:` Es el método que se encarga de procesar la respuesta del método anterior. Primero crea un `JSONObject` y un `JSONArray`. Por cada agente en el array obtiene sus datos, añadiendo después todo como un objeto de la clase `Character` y por último lo añade al `ArrayList`.
-
-`setAgentes:` Es el método que utilizamos para llamar a todos los cambios al buscar un agente.
-
-`setNomeAge` cambia el `Label` de el nombre.
-
-`lblDescAg` cambia el `Label` de la descripción.
-
-`lblRolAg` cambia el `Label` de el rol.
-
-`lblAbil1Ag` cambia el `Label` de la primera habilidad.
-
-`lblAbil2Ag` cambia el `Label` de la segunda habilidad.
-
-`lblAbil3Ag` cambia el `Label` de la tercera habilidad.
-
-`lblAbil3Ag` cambia el `Label` de la cuarta habilidad.
-
-`getAgentes` se utiliza para llamar a la funcion `getAgentesJSON` y devolver la lista con datos.
-
-`getAgentesJSON`Es el método que vincula `procesarRespuesta` y `accesoAPI` para pasarle la respuesta de `accesoAPI` a `procesarRespuesta`
-
-#### SearchController
-
-`handlebtnBuscar` Es el método encargado de buscar un agente, pero antes de ello verifica que esté con el metodo `buscarAgente`. Si no es null, entonces carga, obtiene el controllador de la proxima ventana para usar el método `setAgentes` *Se explica arriba*, después obtiene el estado de la ventana y la muestra.
-
-`buscarAgente` Este método recibe un `String` del método `handlebtnBuscar` y agrega cada agente a un objeto `AgentsController`.
-
-`handlebtnSalir` Es el método encargado de cargar, obtener el estado y mostrar la ventana de login. Básicamente funciona como un `Cerrar sesión`.
-
-`getAgentesJSON`
-
-
-***
-
-### 4.3 Paquete Model
-
-#### Character
-`Getters` y `Contructor`
-
-#### User
-`saveUser:` Es el método encargado de escribir los usuarios que existen dentro del el archivo [txt](https://github.com/Samuyo/ProyectJSON_AD/blob/main/src/main/resources/BD/users.txt).
-
-
-***
 
 ## REPARTO DE TAREAS
-- Paquete Modelo: Samuel
-- Paquete Controller:
-  Funcionamiento con la interfaz gráfica: David
-  Acceso a JSON: Ambos, principalmente Samuel ya que tuvimos un problema y fue quien lo arregló
-- README.MD: David
-- Main: David
-- Diseño de interfaz: Ambos
+- Apartado de agentes: David
+- Apartado de roles: David
+- Apartado de habilidades: David
+- Apartado de usuarios: Samuel
+#### Este reparto ha sido así por la similitud de las tareas de agentes, roles y habilidades, para hacerlo más rápido y cómodo para ambos
+
+- Parte gráfica: Ambos hemos contribuido en cuanto al diseño inicial y final de la aplicación
+- Las bases de datos han sido distribuidas de la misma manera que en las clases, es decir, David se ha encargado de lo que tiene que ver con valorant y Samuel del usuario. 
+- Los botones de exportar a json se ha encargado Samuel
+- Control de errores visual en la aplicación se ha encargado David
+- Readme se ha encargado David
 
 ***
 
 ## EXTRAS REALIZADOS
-Por revisar cuáles hemos hecho
-
+- Login con las premisas mínimas de seguridad
+- Control de errores
+- Damos espacio a la ordenacion de los datos y al almacenaje de estos.
+  
 ***
 
 ## PROPUESTAS
-Si en algún momento se continúa con la aplicación, se podría añadir la búsqueda de mapas y armas. En cuanto a las skins podría ser una función mucho más adelante en las armas.
+Si en algún momento se continúa con la aplicación, se podría añadir la búsqueda de mapas y armas. Además de hacerla un poco más bonita a la vista
 
 ***
 
 ## CONTROL DE ERRORES
-Por el momento:
- - Si se introduce el nombre de un agente que no existe, la aplicación no busca nada.
- - Si el usuario con el que se intenta iniciar no existe, la aplicación no entrará.
+
+-Si el usuario introducido no existe, no avanza.
+-Si al crear usuario ya existe, notifica al usuario.
+-Si al crear usuario no coinciden las contraseñas, notifica al usuario.
+-Una vez se borra un usuario, notifica al administrador, si da error también.
+-Una vez se modifica a un usuario, notifica al administrador, si da error también.
 
 ***
 
 ## CONCLUSIÓN Y TIEMPO DEDICADO
-El tiempo dedicado de David es aproximadamente de: 20h (por ahora) <br/>
-El tiempo dedicado de Samuel es aproximadamente de : 20h
+El tiempo dedicado de David es aproximadamente de: 17h <br/>
+El tiempo dedicado de Samuel es aproximadamente de : 17h
 
-### 9.1  Conclusión:
-Con este proyecto hemos aprendido: a hacer interfaces y vincularlas en java, ya que de momento solo sabíamos en Python, hemos aprendido a entrar a archivos json en red, hemos practicado control de versiones en distintas ramas y nos ha servido como repaso para el examen de este temario.
+### 8.1  Conclusión:
+Hemos aumentado nuestro control en cuanto al JavaFX y trabajar con ello, ya que ha sido más rápido y eficaz, además de que hemos puesto en práctica tanto el acceso a bases de datos como el control de errores en los códigos.
