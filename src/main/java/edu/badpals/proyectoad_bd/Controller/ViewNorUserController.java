@@ -1,5 +1,7 @@
 package edu.badpals.proyectoad_bd.Controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edu.badpals.proyectoad_bd.Model.AgenteDTO;
 import edu.badpals.proyectoad_bd.Model.RolDTO;
 import edu.badpals.proyectoad_bd.Model.ConnetBD;
@@ -14,11 +16,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ViewNorUserController {
     @FXML
@@ -65,6 +70,12 @@ public class ViewNorUserController {
 
     @FXML
     Label lblDescAg;
+
+    @FXML
+    TextField nombreFicheroAg;
+
+    @FXML
+    TextField nombreFicheroHab;
 
 
     @FXML
@@ -216,6 +227,68 @@ public class ViewNorUserController {
             throw new RuntimeException(e);
         }
     }
+
+    public void handleBtnVolver(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    // //Exportar Agentes
+
+
+    public void handleBtnExportarAgenteJson(ActionEvent event) {
+        String archivo = "src/main/resources/JSON/Agente/"+ nombreFicheroAg.getText()+".json"; // Nombre del archivo JSON
+        guardarAgentesEnJson(convertirObservableListAArrayListAg(ConnetBD.getAgentesTab()), archivo);
+    }
+
+    private void guardarAgentesEnJson(ArrayList<AgenteDTO> agentes, String archivo) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Crea el objeto Gson
+
+        try (FileWriter writer = new FileWriter(archivo)) {
+            gson.toJson(agentes, writer); // Convierte la lista a JSON y la escribe en el archivo
+            System.out.println("Datos guardados en el archivo JSON: " + archivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar en JSON: " + e.getMessage());
+        }
+    }
+    private ArrayList<AgenteDTO> convertirObservableListAArrayListAg(ObservableList<AgenteDTO> observableList) {
+        return new ArrayList<>(observableList);
+    }
+
+
+
+    //Exportar Habilidades
+
+    public void handleBtnExportarHab(ActionEvent event) {
+        String archivo = "src/main/resources/JSON/Habilidad/"+ nombreFicheroHab.getText()+".json"; // Nombre del archivo JSON
+        guardarHabilidadEnJson(convertirObservableListAArrayListHab(ConnetBD.getHabTab()), archivo);
+    }
+
+
+    private void guardarHabilidadEnJson(ArrayList<HabilidadDTO> habilidades, String archivo) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Crea el objeto Gson
+
+        try (FileWriter writer = new FileWriter(archivo)) {
+            gson.toJson(habilidades, writer); // Convierte la lista a JSON y la escribe en el archivo
+            System.out.println("Datos guardados en el archivo JSON: " + archivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar en JSON: " + e.getMessage());
+        }
+    }
+
+    private ArrayList<HabilidadDTO> convertirObservableListAArrayListHab(ObservableList<HabilidadDTO> observableList) {
+        return new ArrayList<HabilidadDTO>(observableList);
+    }
+
 
 }
 

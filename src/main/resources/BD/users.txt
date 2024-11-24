@@ -1,3 +1,0 @@
-Usuario=1234a
-11111=11111
-Admin=Dosp!
