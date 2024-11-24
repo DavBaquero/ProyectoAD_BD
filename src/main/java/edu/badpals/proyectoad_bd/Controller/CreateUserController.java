@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -31,6 +32,9 @@ public class CreateUserController {
     @FXML
     public Button btnVolver;
 
+    @FXML
+    Label lblConNoCoi;
+
     ConnetBD con = new ConnetBD();
 
     public void handleBtnCreateUser(ActionEvent event) {
@@ -43,12 +47,17 @@ public class CreateUserController {
             if (checkUserName(nombre)) {
                 insertUser(user);
                 returnLogin(event);
-                System.out.println("Usuario creado");
+                lblConNoCoi.setText("Usuario creado");
+                lblConNoCoi.setStyle("-fx-font-style: italic;");
             } else {
-                System.out.println("Nombre Repetido");
+                lblConNoCoi.setText("El nombre de usuario ya existe");
+                lblConNoCoi.setStyle("-fx-font-style: italic;");
+
             }
         } else {
-            System.out.println("Las contraseñas no coinciden");
+            lblConNoCoi.setText("Las contraseñas no coinciden");
+            lblConNoCoi.setStyle("-fx-font-style: italic;");
+
         }
     }
 
