@@ -73,11 +73,17 @@ Pulsas en cualquier agente y te saldría esto:
 
 ![Imagen_AppAG_click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Cllick.png)
 
+Una vez pulsas uno, puedes exportarlo:
+![Imagen_ExportAg](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/exporta_json_agente.PNG)
+
 Pulsando arriba en la parte de roles te encontrarías:
 ![Imagen_AppH](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Hab.png)
 
 Y si haces click en cualquier habilidad te saldría los datos con este formato:
 ![Imagen_AppH_click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ved_db_click_hab.png)
+
+En caso de querer exportar la información, se le asigna un nombre y pulsas exportar:
+![Imagen AppH Export](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/exporta_json_habilidad.PNG)
 
 Si pulsas en roles:<br/>
 ![Imagen_AppR](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Rol.png)
