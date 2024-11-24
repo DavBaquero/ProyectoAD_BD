@@ -38,6 +38,9 @@ public class LoginController {
     @FXML
     public Button btnEnviar;
 
+    @FXML
+    Label lblErrorAut;
+
     private HashMap<String, String> userCredentials = new HashMap<>();
     private ArrayList<User> administradores = new ArrayList<>();
 
@@ -48,6 +51,7 @@ public class LoginController {
             userCredentials.put(user.getNombreUsuario(), user.getContraseña());
         }
     }
+
 
     public void handleBtnEnter(ActionEvent event){
         String user = txtLogin.getText();
@@ -64,7 +68,9 @@ public class LoginController {
                 changeView(event);
             }
         } else {
-            System.out.println("Autenticación fallida. Usuario o contraseña incorrecta.");
+            lblErrorAut.setText("* Usuario o contraseña incorrectos.");
+            lblErrorAut.setStyle("-fx-text-fill: red;");
+            lblErrorAut.setStyle("-fx-font-style: italic;");
         }
     }
 

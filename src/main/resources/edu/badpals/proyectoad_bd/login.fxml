@@ -46,6 +46,11 @@
                         <Font name="Arial Black" size="14.0" />
                      </font>
                   </Button>
+                  <Label fx:id="lblErrorAut" layoutX="19.0" layoutY="27.0" prefHeight="42.0" prefWidth="259.0" textFill="RED">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="567.0" prefWidth="112.0" style="-fx-background-color: #923cb2;">
