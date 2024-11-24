@@ -5,60 +5,41 @@
 
 # Índice
 1. [INTRODUCCIÓN](#introducción)
-2. [CAPTURAS POSTMAN](#capturas-postman)
-3. [MANUAL USUARIO](#manual-usuario)
-4. [MANUAL TÉCNICO](#manual-técnico)
-5. [REPARTO DE TAREAS](#reparto-de-tareas)
-6. [EXTRAS REALIZADOS](#extras-realizados)
-7. [PROPUESTAS](#propuestas)
-8. [CONTROL DE ERRORES](#control-de-errores)
-9. [CONCLUSIÓN Y TIEMPO DEDICADO](#conclusión-y-tiempo-dedicado)
+2. [MANUAL USUARIO](#manual-usuario)
+3. [MANUAL TÉCNICO](#manual-técnico)
+4. [REPARTO DE TAREAS](#reparto-de-tareas)
+5. [EXTRAS REALIZADOS](#extras-realizados)
+6. [PROPUESTAS](#propuestas)
+7. [CONTROL DE ERRORES](#control-de-errores)
+8. [CONCLUSIÓN Y TIEMPO DEDICADO](#conclusión-y-tiempo-dedicado)
 
 ***
 
 ## INTRODUCCIÓN:
  ### OBJETIVO DEL PROYECTO:
-El objetivo del proyecto es hacer una aplicación con interfaz gráfica, que acceda a una "base de datos" en un archivo "json" de una api que está en internet. En nuestro caso lo elegimos de VALORANT, donde vamos a buscar agentes.
+El objetivo del proyecto es hacer una aplicación con interfaz gráfica, que acceda a una base de datos de MySql en localhost. Nuestro caso es de valorant y la estructura de las bases de datos, ya que la de usuario y la de la información de los agente y habilidad van por separado, es la siguiente: <br/>
+![Imagen database](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/EsquemaDatabase.png)
 
-***
-
-## CAPTURAS POSTMAN
-
-***
-
-### 2.1 
-La primera imagen es Gekko, un agente de VALORANT. La captura la hicimos en postman, la aplicación que usamos para comprobar las consultas.
-![Imagen gekko](https://github.com/Samuyo/ProyectJSON_AD/blob/main/src/main/resources/querys/Gekko.png)
-
-***
-
-### 2.2 
-Está captura es sobre Fade, que al igual que Gekko, es un agente de VALORANT. 
-![Imagen fade](https://github.com/Samuyo/ProyectJSON_AD/blob/main/src/main/resources/querys/Fade.png)
-
-***
-
-### 2.3 
-La última captura es sobre la consulta de Breach.
-![Imagen breach](https://github.com/Samuyo/ProyectJSON_AD/blob/main/src/main/resources/querys/Breach.png)
 
 ***
 
 ## MANUAL USUARIO
+
+***
+
+
 Este punto se divide en 3, usado el jar, usando el IDE o compilador y el funcionamiento genérico.
 Antes de entrar al funcionamiento, se debe hacer:
 
 ```bash
-git clone https://github.com/Samuyo/ProyectJSON_AD.git ruta/donde/quieres/clonar
+git clone https://github.com/DavBaquero/ProyectoAD_BD.git ruta/donde/quieres/clonar
 ```
 
 ***
 
 ### 3.1 Funcionamiento con el jar
 Tienes que usar en la cmd el comando 
-```bash
-java -jar ruta/de/archivo/jar
-```
+
 
 ***
 
@@ -68,21 +49,41 @@ Para ejecutar el programa es necesario entrar a la carpeta y ejecutar el archivo
 ***
 
 ### 3.3 Funcionamiento genérico
-Una vez tienes la ventana de login, el usuario de inicio es "Usuario" y la contraseña es "1234a" (posibilidad de registrarte no llevado a cabo aún) y darle al botón que pone Enter.
-Se te abrirá una ventana donde vas a tener un botón para salir a la pantalla de login y un sitio donde introducir el nombre de el agente que quieres y una vez le das a buscar, se cambiará la ventana.
-*Los agentes disponibles son:*
-```bash
-Gekko, Fade, Sova, Breach, KAY/O, Skye,
-Phoenix, Neon, Reyna, Raze, Jett, Iso, Yoru,
-Vyse, Deadlock, Chamber, Sage, Killjoy, Cypher,
-Omen, Clove, Brimstone, Viper, Astra y Harbor 
-```
+Una vez entras al la aplicación encontrarás esta ventana de inicio de sesión:
 
-En esta ventana, observarás un botón para volver al buscador y los datos *(nombre, descripción, habilidades y rol)* en inglés, ya que por el momento, la api solo está en inglés.
+![Imagen login vacio](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/LoginVacio.png)
 
--añadir imagen si lo conseguimos.
+Si el usuario usuario no existe o no es correcto entonces aparecerá esto:
+![Imagen_login_error](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/LoginError.png)
 
-***
+Entonces, podemos crear un usuario, dandole al botón de crear usuario: <br/>
+![Imagen crear vacio](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/CrearVacio.png)
+
+Está contemplado el hecho de que se repita el nombre, que no coincidan las contraseñas:
+
+![Imagen_crear_fallo](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/CrearConFal.png)
+
+![Imagen_crear_U_E](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/UsuarioExiste.png)
+
+En caso de que tengas usuario y inicies sesion, te enonctraras la siguiente ventana: <br/>
+
+![Imagen_AppAG](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/Ventana_DB.png)
+
+Pulsas en cualquier agente y te saldría esto:
+
+![Imagen_AppAG_click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Cllick.png)
+
+Pulsando arriba en la parte de roles te encontrarías:
+![Imagen_AppH](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Hab.png)
+
+Y si haces click en cualquier habilidad te saldría los datos con este formato:
+![Imagen_AppH_click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ved_db_click_hab.png)
+
+Si pulsas en roles:<br/>
+![Imagen_AppR](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Rol.png)
+
+Cuando pulses un rol, te saldrá algo como esto:
+![Imagen_AppR_Click](https://github.com/DavBaquero/ProyectoAD_BD/blob/main/src/main/resources/img/ven_db_Rol_click.png)
 
 ## MANUAL TÉCNICO
 En la paquete de Controller, están ubicados los controladores de las ventas y sus funciones *tratado en el 4.2*
