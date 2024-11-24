@@ -301,7 +301,7 @@ Si en algún momento se continúa con la aplicación, se podría añadir la bús
 ***
 
 ## CONCLUSIÓN Y TIEMPO DEDICADO
-El tiempo dedicado de David es aproximadamente de: 18h <br/>
+El tiempo dedicado de David es aproximadamente de: 19h <br/>
 El tiempo dedicado de Samuel es aproximadamente de : 18h
 
 ### 8.1  Conclusión:
