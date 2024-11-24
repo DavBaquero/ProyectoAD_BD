@@ -266,5 +266,7 @@ public class ViewNorUserController {
     private ArrayList<HabilidadDTO> convertirObservableListAArrayListHab(ObservableList<HabilidadDTO> observableList) {
         return new ArrayList<HabilidadDTO>(observableList);
     }
+
+
 }
 
