@@ -39,14 +39,23 @@ body {
     /*-fx-border-color: #3a3a3a;*/
 }
 
-/*.password-field:focused {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #3a3a3a;
-}*/
 
 
 
 
+
+
+
+
+
+/*EASTER EGGS*/
+#easterEggF, #easterEggG, #easterEggA, #easterEggX, #easterEggP{
+    -fx-opacity: 0;
+    -fx-border-radius: 10px; /* Bordes redondeados */
+    -fx-background-radius: 10px; /* Asegúrate de que el fondo también sea redondeado */
+    -fx-cursor: hand; /* Cambia el cursor a un estilo de dedo */
+}
+/*-----------*/
 
 
 
@@ -61,34 +70,35 @@ body {
 #chkMantenerSesionUsuario {
     -fx-font-size: 14px;
     -fx-text-fill: #8da2ca; /* Color del texto */
+    -fx-font-weight: 600;
     -fx-padding: 5px;
     -fx-background-color: transparent;
 }
 
 /* Personalización de la caja */
 #chkMantenerSesionUsuario .box {
-    -fx-border-color: #8da2ca; /* Color del borde */
-    -fx-border-width: 2px;
-    -fx-background-color: transparent; /* Fondo por defecto */
+    -fx-background-color: rgb(25,25,54); /* Fondo por defecto */
     -fx-border-radius: 3px; /* Bordes redondeados */
-    -fx-pref-width: 20px; /* Tamaño de la caja */
-    -fx-pref-height: 20px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.5, 1, 1); /* Sombra */
+    -fx-pref-width: 17px; /* Tamaño de la caja */
+    -fx-pref-height: 17px;
+    /*-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.5, 1, 1); !* Sombra *!*/
 }
 
 /* Estilo de la caja cuando está seleccionada */
 #chkMantenerSesionUsuario:selected .box {
-    -fx-background-color: #237cf1; /* Fondo azul al seleccionar */
+    -fx-background-color: rgb(77,101,172); /* Fondo azul al seleccionar */
     -fx-border-color: #237cf1; /* Cambia borde al marcar */
 }
 
-/* Estilo de la marca (check) */
-#chkMantenerSesionUsuario:selected .box .mark {
-    -fx-background-color: #ffffff; /* Color de la marca */
-    -fx-shape: "M 0 0 L 5 10 L 10 0 Z"; /* Forma del check */
-}
+/*!* Estilo de la marca (check) *!         NO FUNCIONA PILLA POR DEFECTO EL DEL JAVAFX*/
+/*#chkMantenerSesionUsuario:selected .box .mark {*/
+/*    -fx-background-image: url('./images/check.svg'); !* Ruta de la imagen SVG *!*/
+/*    -fx-background-size: cover; !* Ajusta la imagen al tamaño de la caja *!*/
+/*    -fx-background-repeat: no-repeat; !* Evita que la imagen se repita *!*/
+/*    -fx-background-position: center;*/
+/*}*/
 
 /* Estilo cuando está enfocado */
 #chkMantenerSesionUsuario:focused .box {
-    -fx-border-color: #4b94f3; /* Cambia el color del borde al enfocar */
+    -fx-border-color: none; /* Cambia el color del borde al enfocar */
 }

@@ -41,8 +41,8 @@ public class Main extends Application {
             // Crear la escena con la vista de login
             primaryStage.setTitle("RIOTEIS Valorant");
             primaryStage.setScene(new Scene(root));
-            primaryStage.setMinWidth(400);
-            primaryStage.setMinHeight(300);
+            //primaryStage.setMinWidth(400);
+            //primaryStage.setMinHeight(300);
             primaryStage.show();
 
             // Si quieres abrir la siguiente ventana (viewNorUser) después de que el login haya sido exitoso,
