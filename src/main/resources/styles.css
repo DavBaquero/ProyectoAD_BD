@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/*:root {*/
+/*    --colorRed: #cf3c3f;*/
+/*    --colorLightRed: #d15d5f;*/
+/*    --colorBlue: #237cf1;*/
+/*    --colorLightBlue: #4b94f3;*/
+/*    --colorBlack: #000;*/
+/*    --colorDeepGray: #3a3a3a;*/
+/*    --colorMediumGray: #a7a7a7;*/
+/*    --colorLightGray: #ececec;*/
+/*    --colorGray: #c4c4c4;*/
+/*    --colorWhite: #fff;*/
+/*    --colorWhiteSecondary: #f9f9f9;*/
+/*}*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+
+
+#txtNombreUsuario,#txtContraUsuario {
+    -fx-text-fill: #8da2ca;
+    -fx-text-color: #8da2ca;
+    -fx-padding: 10px;
+    -fx-font-size: 10px;
+    -fx-font-weight: 900;
+    -fx-background-color: transparent;
+}
+
+#txtNombreUsuario:focused, #txtContraUsuario:focused {
+    -fx-background-color: transparent;
+    /*-fx-border-color: #3a3a3a;*/
+}
+
+/*.password-field:focused {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #3a3a3a;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*- - - - - CHECKBOX - - - - -*/
+/* Estilo general para el CheckBox */
+#chkMantenerSesionUsuario {
+    -fx-font-size: 14px;
+    -fx-text-fill: #8da2ca; /* Color del texto */
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+}
+
+/* Personalización de la caja */
+#chkMantenerSesionUsuario .box {
+    -fx-border-color: #8da2ca; /* Color del borde */
+    -fx-border-width: 2px;
+    -fx-background-color: transparent; /* Fondo por defecto */
+    -fx-border-radius: 3px; /* Bordes redondeados */
+    -fx-pref-width: 20px; /* Tamaño de la caja */
+    -fx-pref-height: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.5, 1, 1); /* Sombra */
+}
+
+/* Estilo de la caja cuando está seleccionada */
+#chkMantenerSesionUsuario:selected .box {
+    -fx-background-color: #237cf1; /* Fondo azul al seleccionar */
+    -fx-border-color: #237cf1; /* Cambia borde al marcar */
+}
+
+/* Estilo de la marca (check) */
+#chkMantenerSesionUsuario:selected .box .mark {
+    -fx-background-color: #ffffff; /* Color de la marca */
+    -fx-shape: "M 0 0 L 5 10 L 10 0 Z"; /* Forma del check */
+}
+
+/* Estilo cuando está enfocado */
+#chkMantenerSesionUsuario:focused .box {
+    -fx-border-color: #4b94f3; /* Cambia el color del borde al enfocar */
+}

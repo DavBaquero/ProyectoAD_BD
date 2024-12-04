@@ -21,11 +21,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // Cargar el archivo FXML de login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/badpals/proyectoad_bd/LoginRiot.fxml"));
             Parent root = loader.load();  // Cargamos la vista
 
             // Obtener el controlador del login
-            LoginController loginController = loader.getController();
+            //LoginController loginController = loader.getController();
 
             // Aquí es donde puedes crear y pasar el controlador de login a otros controladores
             // Cargar la siguiente vista que necesita el controlador de login (por ejemplo, ViewNorUserController)
@@ -36,10 +36,10 @@ public class Main extends Application {
             ViewNorUserController viewNorUserController = viewNorUserLoader.getController();
 
             // Pasar el LoginController a ViewNorUserController
-            viewNorUserController.setLoginController(loginController);  // Ahora ViewNorUser tiene acceso al LoginController
+            //viewNorUserController.setLoginController(loginController);  // Ahora ViewNorUser tiene acceso al LoginController
 
             // Crear la escena con la vista de login
-            primaryStage.setTitle("Login ValorantAPI");
+            primaryStage.setTitle("RIOTEIS Valorant");
             primaryStage.setScene(new Scene(root));
             primaryStage.setMinWidth(400);
             primaryStage.setMinHeight(300);

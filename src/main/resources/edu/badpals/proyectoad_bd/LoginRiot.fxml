@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1538.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.badpals.proyectoad_bd.Controller.RiotLoginController">
+   <stylesheets>
+      <URL value="@../../../styles.css" /> <!--ESTO DEBERIA DE SER @./styles.css el @ no esta pillando como resources....-->
+   </stylesheets>
+   <children>
+      <ImageView fitHeight="889.0" fitWidth="1538.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/LoginRiot.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblDatosRiotPnl1" layoutX="66.0" layoutY="221.0" prefHeight="33.0" prefWidth="150.0" text="NOMBRE DE USUARIO" textFill="#8da2ca">
+         <font>
+            <Font name="SansSerif Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDatosRiotPnl" layoutX="66.0" layoutY="284.0" prefHeight="34.0" prefWidth="264.0" text="CONTRASEÑA" textFill="#8da2ca">
+         <font>
+            <Font name="SansSerif Bold" size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombreUsuario" layoutX="56.0" layoutY="237.0" prefHeight="50.0" prefWidth="287.0" />
+      <PasswordField fx:id="txtContraUsuario" layoutX="56.0" layoutY="301.0" prefHeight="50.0" prefWidth="287.0" styleClass="floating-input" />
+      <CheckBox fx:id="chkMantenerSesionUsuario" layoutX="52.0" layoutY="422.0" mnemonicParsing="false" text="Mantener sesión iniciada" />
+   </children>
+</AnchorPane>
